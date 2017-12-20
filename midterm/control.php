@@ -5,6 +5,7 @@ require_once('loginModel.php');
 $action =$_REQUEST['act'];
 switch ($action) {
 //刪除
+//test5
 case 'delete':
 $id = (int) $_REQUEST['id'];
     if ($id > 0) {
