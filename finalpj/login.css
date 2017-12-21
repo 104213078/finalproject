@@ -1,7 +1,7 @@
 body {
     font-family: 微軟正黑體;
-    background-image: url(pic.jpg);
-    background-size: cover;
+    background: url(圖片2.png);
+    background-size: 450px;
     font-size:20px;
 }
 div {box-sizing: border-box;}
@@ -13,7 +13,7 @@ div {box-sizing: border-box;}
     left: 50%;
     margin: -270px 0 0 -200px;
     padding: 30px 30px;
-    background: linear-gradient(to bottom, rgba(255, 255, 255,0.6), rgba(255, 255, 255,0.6));
+    background: linear-gradient(to bottom, rgba(255, 255, 255,0.9), rgba(255, 255, 255,0.9));
     text-align: left;
 }
 h1 {text-align: center;}
