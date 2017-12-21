@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>User</title>
-<link type="text/css" rel="stylesheet" href="user_edit.css">
+<link type="text/css" rel="stylesheet" href="user_1.css">
 </head>
 <script type="text/javascript">
 window.onload=function() {
@@ -11,9 +11,9 @@ window.onload=function() {
 };
 function picture() {
     var p="<table class='pic'>";
-    for (var i=0; i<3; i++) {
+    for (var i=0; i<4; i++) {
         p+="<tr>";
-        for (var j=i*4+1; j<=(i+1)*4; j++){
+        for (var j=i*3+1; j<=(i+1)*3; j++){
             p+="<td class='k'><img src='test/"+j+".jpg' class='img'/>";
             p+="<div class='mid'><img src='pencil.png' class='edit'/></div></td>";
         }
@@ -24,12 +24,12 @@ function picture() {
 }
 </script>
 <body>
-<div id="user">
-<img src="img_avatar2.png" alt="Avatar" class="avatar" id="u">
-</div>
+<div id="title">
+<img src="圖片7.png" alt="Avatar" class="avatar" id="u">
 <div id="menu">
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
 <button class="tool" onclick="location.href='user_upload.php'">Upload</button>
+</div>
 </div>
 <div id="content">
 <div id="search">
