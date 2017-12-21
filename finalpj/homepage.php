@@ -6,7 +6,7 @@
 <link type="text/css" rel="stylesheet" href="homepage.css">
 </head>
 <body>
-<!--<div id="content_n"></div>-->
+<div id="content_n"></div>
 <div id="content">
 <h1>Homepage</h1>
 <button class="button" onclick="location.href='login.php'">User</button>
