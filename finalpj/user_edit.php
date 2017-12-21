@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>User</title>
-<link type="text/css" rel="stylesheet" href="user_1.css">
+<link type="text/css" rel="stylesheet" href="user_edit.css">
 </head>
 <script type="text/javascript">
 window.onload=function() {
