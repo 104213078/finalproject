@@ -1,8 +1,7 @@
 body {
     font-family: 微軟正黑體;
-    background-image: url(pic.jpg);
-    //background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
-    background-size: cover;
+    background: url(圖片2.png);
+    background-size: 450px;
     font-size:20px;
     text-align: center;
 }
