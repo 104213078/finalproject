@@ -14,10 +14,11 @@
 </div>
 </div>
 <div id="content">
-<form method="post" action="control.php">
+<form method="post" action="control.php" enctype="multipart/form-data">
 <table id="t">
 <tr><td rowspan="7" id="up_p"><label class="upload_cover">
-    <input id="upload_input" type="file"/>
+    <input type="hidden" name="act" value="update">
+    <input id="upload_input" type="file" name="upfile"/>
     <img src="p.png" class="upload_icon"/>
     </label></td>
     <th>名稱</th><td><input type="text"/></td></tr>
