@@ -123,8 +123,8 @@ input, select, textarea {
     //background: black;
     //border: 10px dotted #595656;
 }
-#upload_input {
-display: none;
+.upload_input {
+    display:none;
 }
 .upload_icon {
 left: 0;

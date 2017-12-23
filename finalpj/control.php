@@ -7,8 +7,7 @@ switch ($action) {
 
 case 'update':
     
-    if ( $_FILES["upfile"]["size"] > 0 ) 
-        {
+    if ( $_FILES["upfile"]["size"] > 0 ) {
          //開啟圖片檔
          $file = fopen($_FILES["upfile"]["tmp_name"], "rb");
          // 讀入圖片檔資料
@@ -20,10 +19,8 @@ case 'update':
          $fileContents = base64_encode($fileContents);
          update($fileContents);
          
-        }
-        else
-        {
-         echo "圖片上傳失敗";
+    }else {
+      echo "圖片上傳失敗";
         }
 	}
 ?>
