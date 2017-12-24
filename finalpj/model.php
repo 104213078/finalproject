@@ -21,5 +21,9 @@ function update($fileContents) {
            } 
 }
 
-
+function getButterflyList() {
+    global $conn;
+	$sql = "SELECT * FROM `butterfly`";
+	return mysqli_query($conn, $sql);
+}
 ?>
