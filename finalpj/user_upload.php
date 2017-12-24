@@ -46,7 +46,7 @@ $(function (){
 <tr><td rowspan="7" id="up_p"><label class="upload_cover">
     <input type="hidden" name="act" value="update">
     <input class="upload_input" type="file" name="upfile" />
-    <img src="p.png" class="upload_icon"/>
+    <img src="image/p.png" class="upload_icon"/>
     </label></td>
     <th>名稱</th><td><input type="text"/></td></tr>
 <tr><th>別名</th><td><input type="text"/></td></tr>
