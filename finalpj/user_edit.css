@@ -63,20 +63,23 @@ select {
 .pic {margin: 20px auto;}
 .k {
     position: relative;
-    //width: 50%;
 }
 
 .img {
-  opacity: 1;
-  display: block;
-  transition: .5s ease;
-  backface-visibility: hidden;
-  width: 280px;
-  margin: 10px 10px;
+    opacity: 1;
+    width: 280px;
+    height: 150px;
+    background-size:300px;
+    background-repeat: no-repeat;
+    background-position:center center;
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    margin: 5px 5px;
 }
 
 .mid {
-  transition: .5s ease;
+  transition: .5s center;
   opacity: 0;
   position: absolute;
   top: 50%;
@@ -95,6 +98,7 @@ select {
 
 .edit {
     width: 50px;
+    cursor: pointer;
 }
 .tool {
     border: none;

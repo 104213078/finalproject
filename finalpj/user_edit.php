@@ -5,24 +5,6 @@
 <title>User</title>
 <link type="text/css" rel="stylesheet" href="user_edit.css">
 </head>
-<script type="text/javascript">
-window.onload=function() {
-    picture();
-};
-function picture() {
-    var p="<table class='pic'>";
-    for (var i=0; i<4; i++) {
-        p+="<tr>";
-        for (var j=i*3+1; j<=(i+1)*3; j++){
-            p+="<td class='k'><img src='test/"+j+".jpg' class='img'/>";
-            p+="<div class='mid'><img src='image/pencil.png' class='edit'/></div></td>";
-        }
-        p+="</tr>";
-    }
-    p+="</table>";
-    document.getElementById("show").innerHTML=p;
-}
-</script>
 <body>
 <div id="title">
 <img src="image/圖片7.png" alt="Avatar" class="avatar" id="u">
@@ -33,12 +15,20 @@ function picture() {
 </div>
 <div id="content">
 <div id="search">
-<form method="post" action="control.php">
-<td><label>Name<select name="name" value="name">
-        <option>青蛙</option>
-        <option>蝴蝶</option>
-        <option>蜻蜓</option>
-        <option>其他</option>
+<form method='post' action='control.php'>
+<td><label>Name<select name='name' value='name'>
+<?php
+require("model.php");
+$results=getButterflyList();
+global $i;
+$i=1;
+while ($rs=mysqli_fetch_array($results)) {
+    if ( ($i%3) == 1) {
+        echo "<option>", $rs['name'], "</option>";
+    }
+    $i++;
+}
+?>
 </select></label></td>
 <td><label>Season<select name="season">
         <option>春</option>
@@ -46,15 +36,31 @@ function picture() {
         <option>秋</option>
         <option>冬</option>
 </select></label></td>
-<td><label>Age<select name="age">
-        <option>幼年</option>
-        <option>成年</option>
-        <option>老年</option>
+<td><label>Stage<select name="stage">
+        <option>幼蟲期</option>
+        <option>變態期</option>
+        <option>成蟲期</option>
 </select></label></td>
 <input type="submit" class="button" value="Submit" />
 </form>
 </div>
-<div id="show"></div>
+<div id="show">
+<?php
+$results=getButterflyList();
+$i=1;
+echo "<table class='pic'>";
+while ($rs=mysqli_fetch_array($results)) {
+    if ($i%3==1) 
+        echo "<tr>";
+    echo "<td class='k'><div style=\"background-image:url('image/", $rs['name'], "-", $rs['stage'], ".jpg')\" class='img'></div>";
+    echo "<div class='mid'><a href='user_edit_id.php?id=",$rs['id'] ,"'><img src='image/pencil.png' class='edit'/></a></div></td>";
+    if ($i%3==0)
+        echo "</tr>";
+    $i++;
+}
+echo "</table>";
+?>
+</div>
 </div>
 </body>
 </html>
