@@ -5,7 +5,7 @@ body {
 }
 div {box-sizing: border-box;}
 #title {
-    background: url(圖片2.png);
+    background: url(image/圖片2.png);
     background-size: 450px;
     position: absolute;
     top: 0px;

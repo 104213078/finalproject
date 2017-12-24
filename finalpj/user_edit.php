@@ -15,7 +15,7 @@ function picture() {
         p+="<tr>";
         for (var j=i*3+1; j<=(i+1)*3; j++){
             p+="<td class='k'><img src='test/"+j+".jpg' class='img'/>";
-            p+="<div class='mid'><img src='pencil.png' class='edit'/></div></td>";
+            p+="<div class='mid'><img src='image/pencil.png' class='edit'/></div></td>";
         }
         p+="</tr>";
     }
@@ -25,7 +25,7 @@ function picture() {
 </script>
 <body>
 <div id="title">
-<img src="圖片7.png" alt="Avatar" class="avatar" id="u">
+<img src="image/圖片7.png" alt="Avatar" class="avatar" id="u">
 <div id="menu">
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
 <button class="tool" onclick="location.href='user_upload.php'">Upload</button>
@@ -34,7 +34,7 @@ function picture() {
 <div id="content">
 <div id="search">
 <form method="post" action="control.php">
-<td><label>Species<select name="species" value="Species">
+<td><label>Name<select name="name" value="name">
         <option>青蛙</option>
         <option>蝴蝶</option>
         <option>蜻蜓</option>

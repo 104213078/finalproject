@@ -8,7 +8,7 @@
 <body>
 <div id="login">
 <h1>Login</h1>
-<img src="img_avatar2.png" alt="Avatar" class="avatar">
+<img src="image/img_avatar2.png" alt="Avatar" class="avatar">
 <form method="post" action="loginControl.php">
 <input type="hidden" name="act" value="login">
 <div id="user">

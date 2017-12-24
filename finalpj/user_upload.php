@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="title">
-<img src="圖片7.png" alt="Avatar" class="avatar" id="u">
+<img src="image/圖片7.png" alt="Avatar" class="avatar" id="u">
 <div id="menu">
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
 <button class="tool" onclick="location.href='user_upload.php'">Upload</button>

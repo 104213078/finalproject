@@ -27,7 +27,7 @@ function picture() {
 <div id="content">
 <div id="search">
 <form method="post" action="control.php">
-<td><label>Species<select name="species" value="Species">
+<td><label>Name<select name="name" value="name">
         <option>青蛙</option>
         <option>蝴蝶</option>
         <option>蜻蜓</option>
