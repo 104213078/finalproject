@@ -5,33 +5,24 @@
 <title>Picture</title>
 <link type="text/css" rel="stylesheet" href="view.css">
 </head>
-<script type="text/javascript">
-window.onload=function() {
-    picture();
-};
-function picture() {
-    var p="<table id='pic'>";
-    for (var i=0; i<3; i++) {
-        p+="<tr>";
-        for (var j=i*4+1; j<=(i+1)*4; j++){
-            p+="<td><img src='test/"+j+".jpg' class='img'/><br/>";
-        }
-        p+="</tr>";
-    }
-    p+="</table>";
-    document.getElementById("show").innerHTML=p;
-}
-</script>
 <body>
 <h1>Picture Ablum</h1>
 <div id="content">
 <div id="search">
-<form method="post" action="control.php">
-<td><label>Species<select name="species" value="Species">
-        <option>青蛙</option>
-        <option>蝴蝶</option>
-        <option>蜻蜓</option>
-        <option>其他</option>
+<form method='post' action='control.php'>
+<td><label>Name<select name='name' value='name'>
+<?php
+require("model.php");
+$results=getButterflyList();
+global $i;
+$i=1;
+while ($rs=mysqli_fetch_array($results)) {
+    if ( ($i%3) == 1) {
+        echo "<option>", $rs['name'], "</option>";
+    }
+    $i++;
+}
+?>
 </select></label></td>
 <td><label>Season<select name="season">
         <option>春</option>
@@ -39,15 +30,30 @@ function picture() {
         <option>秋</option>
         <option>冬</option>
 </select></label></td>
-<td><label>Age<select name="age">
-        <option>幼年</option>
-        <option>成年</option>
-        <option>老年</option>
+<td><label>Stage<select name="stage">
+        <option>幼蟲期</option>
+        <option>變態期</option>
+        <option>成蟲期</option>
 </select></label></td>
 <input type="submit" class="button" value="Submit" />
 </form>
 </div>
-<div id="show"></div>
+<div id="show">
+<?php
+$results=getButterflyList();
+$i=1;
+echo "<table class='pic' >";
+while ($rs=mysqli_fetch_array($results)) {
+    if ($i%4==1) 
+        echo "<tr>";
+    echo "<td background='image/", $rs['name'], "-", $rs['stage'], ".jpg' class='img'></td>";
+    if ($i%4==0)
+        echo "</tr>";
+    $i++;
+}
+echo "</table>";
+?>
+</div>
 </div>
 </body>
 </html>

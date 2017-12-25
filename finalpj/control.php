@@ -4,26 +4,21 @@ require_once('model.php');
 //require_once('loginModel.php');
 $action =$_REQUEST['act'];
 switch ($action) {
-
 case 'update':
     
-    if ( $_FILES["upfile"]["size"] > 0 ) 
-        {
+    if ( $_FILES["upfile"]["size"] > 0 ) {
          //開啟圖片檔
          $file = fopen($_FILES["upfile"]["tmp_name"], "rb");
          // 讀入圖片檔資料
          $fileContents = fread($file, filesize($_FILES["upfile"]["tmp_name"])); 
          //關閉圖片檔
          fclose($file);
-
          // 圖片檔案資料編碼
          $fileContents = base64_encode($fileContents);
          update($fileContents);
          
-        }
-        else
-        {
-         echo "圖片上傳失敗";
+    }else {
+      echo "圖片上傳失敗";
         }
 	}
 ?>

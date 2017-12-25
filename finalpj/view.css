@@ -1,6 +1,6 @@
 body {
     font-family: 微軟正黑體;
-    background: url(圖片2.png);
+    background: url(image/圖片2.png);
     background-size: 450px;
     font-size:20px;
     text-align: center;
@@ -27,18 +27,6 @@ select {
     margin: 4px 10px;
     font-size: 15px;
 }
-#show {
-    height: 350px;
-    overflow: scroll;
-    overflow-x: hidden;
-    border-radius:5px;
-    background: linear-gradient(to bottom, rgba(255, 255, 255,0.6), rgba(255, 255, 255,0.6));
-}
-#pic {margin: 20px auto;}
-.img {
-    width: 250px;
-    margin: 10px 10px;
-}
 .button {
     border: none;
     padding: 8px 16px;
@@ -57,4 +45,22 @@ select {
 .button:hover {
     background-color: #555555;
     color: white;
+}
+
+#show {
+    height: 350px;
+    overflow: scroll;
+    overflow-x: hidden;
+    border-radius:5px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255,0.6), rgba(255, 255, 255,0.6));
+}
+.pic {
+    border-spacing:20px;
+}
+.img {
+    width: 280px;
+    height: 150px;
+    background-size:300px;
+    background-repeat: no-repeat;
+    background-position:center center;
 }
