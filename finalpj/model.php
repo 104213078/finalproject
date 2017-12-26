@@ -26,4 +26,19 @@ function getButterflyList() {
 	$sql = "SELECT * FROM `butterfly`";
 	return mysqli_query($conn, $sql);
 }
-?>
+function insertdata($name='',$nickname='', $field='',$gender='',$stage='',$season='',$description=''){
+	global $conn;
+	if ($name > ' ') {
+		//基本安全處理
+		$name=mysqli_real_escape_string($conn, $name);
+		$nickname=mysqli_real_escape_string($conn, $nickname);
+		$field=mysqli_real_escape_string($conn, $field);
+		$gender=mysqli_real_escape_string($conn, $gender);
+		$stage=mysqli_real_escape_string($conn, $stage);
+		$season=mysqli_real_escape_string($conn, $season);
+		$description=mysqli_real_escape_string($conn, $description);	
+		$sql = "insert into butterfly(name, nickname,field,gender,stage,season,description) values ('$name','$nickname','$field', '$gender','$stage','$season','$description')";
+		return mysqli_query($conn, $sql); //執行SQL
+	} else return false;
+}
+ ?>

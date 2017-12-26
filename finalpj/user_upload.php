@@ -44,18 +44,19 @@ $(function (){
 <form method="post" action="control.php" enctype="multipart/form-data">
 <table id="t">
 <tr><td rowspan="7" id="up_p"><label class="upload_cover">
-    <input type="hidden" name="act" value="update">
+    <input type="hidden" name="act" value='update'>
     <input class="upload_input" type="file" name="upfile" />
     <img src="image/p.png" class="upload_icon"/>
     </label></td>
-    <th>名稱</th><td><input type="text"/></td></tr>
-<tr><th>別名</th><td><input type="text"/></td></tr>
-<tr><th>科目</th><td><input type="text"/></td></tr>
-<tr><th>性別</th><td><label><select name="season">
+	<input type="hidden" name="act" value='insert'>
+    <th>名稱</th><td><input name="name" type="text"/></td></tr>
+<tr><th>別名</th><td><input name="nickname" type="text"/></td></tr>
+<tr><th>科目</th><td><input name="field" type="text"/></td></tr>
+<tr><th>性別</th><td><label><select name="gender">
         <option>公</option>
         <option>母</option>
 </select></label></td>
-<tr><th>階段</th><td><label><select name="season">
+<tr><th>階段</th><td><label><select name="stage">
         <option>幼蟲期</option>
         <option>變態期</option>
         <option>成蟲期</option>
@@ -66,7 +67,7 @@ $(function (){
         <option>秋</option>
         <option>冬</option>
 </select></label></td></tr>
-<tr><th>描述</th><td><textarea  id="cmts" name="cmts" cols="40" rows="5"></textarea></td></tr>
+<tr><th>描述</th><td><textarea id="cmts" name="cmts" cols="40" rows="5"></textarea></td></tr>
 </table>
 <input type="submit" class="button" value="Submit" />
 </form>
