@@ -9,7 +9,7 @@
 <div id="login">
 <h1>Login</h1>
 <img src="image/img_avatar2.png" alt="Avatar" class="avatar">
-<form method="post" action="loginControl.php">
+<form method="post" action="logincontrol.php">
 <input type="hidden" name="act" value="login">
 <div id="user">
 Username<input type="text" name="id" placeholder="Enter Username" ><br />
