@@ -38,6 +38,7 @@ $(function (){
 <div id="menu">
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
 <button class="tool" onclick="location.href='user_upload.php'">Upload</button>
+<a href='homepage.php'>logout</a>
 </div>
 </div>
 <div id="content">

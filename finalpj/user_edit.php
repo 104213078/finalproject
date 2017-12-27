@@ -1,3 +1,12 @@
+<?php
+session_start();
+require("dbconnect.php");
+//set the login mark to empty
+if ( ! isset($_SESSION['uID']) or $_SESSION['uID'] <= 0) {
+	header("Location: login.php");
+	exit(0);
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,7 +19,8 @@
 <img src="image/圖片7.png" alt="Avatar" class="avatar" id="u">
 <div id="menu">
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
-<button class="tool" onclick="location.href='user_upload.php'">Upload</button>
+<button class="tool" onclick="location.href='user_upload.php'">Upload</button><br />
+<a href='homepage.php'>logout</a>
 </div>
 </div>
 <div id="content">

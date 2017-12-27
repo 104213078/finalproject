@@ -1,8 +1,8 @@
 <?php
 session_start(); //啟用session 變數功能
+require("dbconnect.php");
 require_once('loginmodel.php');
 $action =$_REQUEST['act'];
-print_r($_REQUEST);
 
 switch ($action) {
 case 'login':
@@ -14,7 +14,7 @@ case 'login':
 			header('Location: user_edit.php');
 	} else {
 		//print error message
-		echo "Invalid Username or Password - Please try again <br />";
+		echo "userName or passWord is wrong !<br />";
 		echo '<a href="login.php">Login again</a> ';
 	}
 	break;

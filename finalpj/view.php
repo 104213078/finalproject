@@ -36,6 +36,7 @@ while ($rs=mysqli_fetch_array($results)) {
         <option>成蟲期</option>
 </select></label></td>
 <input type="submit" class="button" value="Submit" />
+<a href='login.php'>login</a>
 </form>
 </div>
 <div id="show">
