@@ -22,6 +22,6 @@ case 'insert':
 <title>無標題文件</title>
 </head>
 <body>
-<a href='user_upload_n.php'>執行完成，回留言板</a>
+<a href='user_upload.php'>執行完成，回留言板</a>
 </body>
 </html>

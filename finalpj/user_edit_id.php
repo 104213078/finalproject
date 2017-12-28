@@ -1,6 +1,6 @@
 <?php
 session_start();
-require("dbconnect.php");
+require('loginmodel.php');
 require('model.php');
 //取得目標內容
 $id = (int)$_REQUEST['id'];
@@ -58,6 +58,7 @@ $(function (){
 <div id="menu">
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
 <button class="tool" onclick="location.href='user_upload.php'">Upload</button>
+<a href='homepage.php'>logout</a>
 </div>
 </div>
 <div id="content">
