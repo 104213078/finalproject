@@ -30,45 +30,39 @@ $(function (){
 })
 }
 </script>
-</head>
 
+</head>
 <body>
 <div id="title">
 <img src="image/圖片7.png" alt="Avatar" class="avatar" id="u">
 <div id="menu">
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
 <button class="tool" onclick="location.href='user_upload.php'">Upload</button>
-<a href='homepage.php'>logout</a>
 </div>
 </div>
 <div id="content">
-<form method="post" action="control.php" enctype="multipart/form-data">
 <table id="t">
 <tr><td rowspan="7" id="up_p"><label class="upload_cover">
-    <input type="hidden" name="act" value='update'>
+    <form method="post" action="user_upload_control.php" enctype="multipart/form-data">
+    <input type="hidden" name="act" value="update">
     <input class="upload_input" type="file" name="upfile" />
+    <input name="act" type="hidden" value='insert' />
     <img src="image/p.png" class="upload_icon"/>
-    </label></td>
-	<input type="hidden" name="act" value='insert'>
-    <th>名稱</th><td><input name="name" type="text"/></td></tr>
-<tr><th>別名</th><td><input name="nickname" type="text"/></td></tr>
-<tr><th>科目</th><td><input name="field" type="text"/></td></tr>
-<tr><th>性別</th><td><label><select name="gender">
-        <option>公</option>
-        <option>母</option>
-</select></label></td>
-<tr><th>階段</th><td><label><select name="stage">
+    <input type="submit" value="預覽" />
+    </form></label></td>
+<form method="post" action="control.php" enctype="multipart/form-data">
+    <th>名稱</th><td><input type="text"/></td></tr>
+<tr><th>階段</th><td><label><select name="season">
         <option>幼蟲期</option>
         <option>變態期</option>
         <option>成蟲期</option>
 </select></label></td></tr>
-<tr><th>季節</th><td><label><select name="season">
-        <option>春</option>
-        <option>夏</option>
-        <option>秋</option>
-        <option>冬</option>
-</select></label></td></tr>
-<tr><th>描述</th><td><textarea id="cmts" name="cmts" cols="40" rows="5"></textarea></td></tr>
+<tr><th>日期</th><td><label>
+        <input type="text" name="date" />
+</label></td></tr>
+<tr><th>作者</th><td><label>
+        <input name="author" type="text" />
+</label></td></tr>
 </table>
 <input type="submit" class="button" value="Submit" />
 </form>

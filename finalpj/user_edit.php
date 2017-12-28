@@ -1,12 +1,3 @@
-<?php
-session_start();
-require("dbconnect.php");
-//set the login mark to empty
-if ( ! isset($_SESSION['uID']) or $_SESSION['uID'] <= 0) {
-	header("Location: login.php");
-	exit(0);
-}
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -19,8 +10,7 @@ if ( ! isset($_SESSION['uID']) or $_SESSION['uID'] <= 0) {
 <img src="image/圖片7.png" alt="Avatar" class="avatar" id="u">
 <div id="menu">
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
-<button class="tool" onclick="location.href='user_upload.php'">Upload</button><br />
-<a href='homepage.php'>logout</a>
+<button class="tool" onclick="location.href='user_upload.php'">Upload</button>
 </div>
 </div>
 <div id="content">
@@ -56,13 +46,13 @@ while ($rs=mysqli_fetch_array($results)) {
 </div>
 <div id="show">
 <?php
-$results=getButterflyList();
+$results=showButterfly();
 $i=1;
 echo "<table class='pic'>";
 while ($rs=mysqli_fetch_array($results)) {
     if ($i%3==1) 
         echo "<tr>";
-    echo "<td class='k'><div style=\"background-image:url('image/", $rs['name'], "-", $rs['stage'], ".jpg')\" class='img'></div>";
+    echo "<td class='k'><div style=\"background-image:url('upload/", $rs['src'], "')\" class='img'></div>";
     echo "<div class='mid'><a href='user_edit_id.php?id=",$rs['id'] ,"'><img src='image/pencil.png' class='edit'/></a></div></td>";
     if ($i%3==0)
         echo "</tr>";

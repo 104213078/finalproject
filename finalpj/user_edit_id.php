@@ -1,18 +1,18 @@
 <?php
 session_start();
 require("dbconnect.php");
+require('model.php');
 //取得目標內容
 $id = (int)$_REQUEST['id'];
-$sql = "select * from butterfly where id=$id;";
+//SELECT * FROM `img`, `butterfly` WHERE `img`.`b_name`=`butterfly`.`name` AND `img`.`b_stage`=`butterfly`.`stage`
+$sql = "select * from img where id=$id;";
 $result=mysqli_query($conn,$sql) or die("DB Error: Cannot retrieve message."); //執行SQL查詢
 if ($rs=mysqli_fetch_assoc($result)) {
-	$name = $rs['name'];
-    $nickname=$rs['nickname'];
-	$field=$rs['field'];
-    $gender = $rs['gender'];
-    $stage=$rs['stage'];
-	$season=$rs['season'];
-    $description=$rs['description'];
+	$src=$rs['src'];
+    $b_name=$rs['b_name'];
+    $b_stage=$rs['b_stage'];
+    $date=$rs['date'];
+    $author=$rs['author'];
 } else {
 	echo "Your id is wrong!!";
 	exit(0);
@@ -58,7 +58,6 @@ $(function (){
 <div id="menu">
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
 <button class="tool" onclick="location.href='user_upload.php'">Upload</button>
-<a href='homepage.php'>logout</a>
 </div>
 </div>
 <div id="content">
@@ -67,17 +66,16 @@ $(function (){
 <tr><td rowspan="7" id="up_p"><label class="upload_cover">
     <input type="hidden" name="act" value="update">
     <input class="upload_input" type="file" name="upfile" />
-    <?php echo "<img src='image/", $name, "-", $stage, ".jpg' class='img'/></label></td>"; ?>
-    <th>名稱</th><td><select name='name'>
+    <?php echo "<img src='upload/", $src, "' class='img'/></label></td>"; ?>
+    <th>名稱</th><td><select name='b_name'>
 <?php
-require("model.php");
 $results=getButterflyList();
 global $i;
 $i=1;
 while ($rs=mysqli_fetch_array($results)) {
     if ( ($i%3) == 1) {
         echo "<option "; 
-         if ($name==$rs['name']) 
+         if ($b_name==$rs['name']) 
              echo "selected"; 
          echo ">", $rs['name'], "</option>";
     }
@@ -85,24 +83,17 @@ while ($rs=mysqli_fetch_array($results)) {
 }
 echo "</td></tr>";
 ?>
-<tr><th>別名</th><td><input type="text" value="<?php echo $nickname;?>" /></td></tr>
-<tr><th>科目</th><td><input type="text" value="<?php echo $field;?>" /></td></tr>
-<tr><th>性別</th><td><label><select name="gender">
-        <option <?php if ($gender=='公') echo "selected";?> >雌</option>
-        <option <?php if ($gender=='母') echo "selected";?> >雄</option>
-</select></label></td>
-<tr><th>階段</th><td><label><select name="stage">
-        <option <?php if ($stage=='幼蟲期') echo "selected";?> >幼蟲期</option>
-        <option <?php if ($stage=='變態期') echo "selected";?> >變態期</option>
-        <option <?php if ($stage=='成蟲期') echo "selected";?> >成蟲期</option>
+<tr><th>階段</th><td><label><select name="b_stage">
+        <option >幼蟲期</option>
+        <option >變態期</option>
+        <option >成蟲期</option>
 </select></label></td></tr>
-<tr><th>季節</th><td><label><select name="season">
-        <option <?php if ($gender=='春') echo "selected";?> >春</option>
-        <option <?php if ($gender=='夏') echo "selected";?> >夏</option>
-        <option <?php if ($gender=='秋') echo "selected";?> >秋</option>
-        <option <?php if ($gender=='冬') echo "selected";?> >冬</option>
-</select></label></td></tr>
-<tr><th>描述</th><td><textarea name="description" cols="40" rows="5" ><?php echo $description;?></textarea></td></tr>
+<tr><th>日期</th><td><label>
+        <input type="text" name="date" value="<?php echo $date;?>"/>
+</label></td></tr>
+<tr><th>作者</th><td><label>
+        <input name="author" type="text" value="<?php echo $author;?>" />
+</label></td></tr>
 </table>
 <input type="submit" class="button" value="Submit" />
 </form>

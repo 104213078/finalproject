@@ -36,18 +36,17 @@ while ($rs=mysqli_fetch_array($results)) {
         <option>成蟲期</option>
 </select></label></td>
 <input type="submit" class="button" value="Submit" />
-<a href='login.php'>login</a>
 </form>
 </div>
 <div id="show">
 <?php
-$results=getButterflyList();
+$results=showButterfly();
 $i=1;
 echo "<table class='pic' >";
 while ($rs=mysqli_fetch_array($results)) {
     if ($i%4==1) 
         echo "<tr>";
-    echo "<td background='image/", $rs['name'], "-", $rs['stage'], ".jpg' class='img'></td>";
+    echo "<td background='upload/", $rs['src'], "' class='img'></td>";
     if ($i%4==0)
         echo "</tr>";
     $i++;

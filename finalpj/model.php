@@ -20,25 +20,32 @@ function update($fileContents) {
             echo "您所上傳的檔案無法儲存進入資料庫";
            } 
 }
+function insert_img ($src='', $b_name='', $b_stage='', $date='', $author='') {
+    global $conn;
+	if ($src > ' ') {
+		//基本安全處理
+        $src=mysqli_real_escape_string($conn,$src);
+        $b_name=mysqli_real_escape_string($conn,$b_name);
+        $b_stage=mysqli_real_escape_string($conn,$b_stage);
+        $date=mysqli_real_escape_string($conn,$date);
+        $author=mysqli_real_escape_string($conn,$author);
+        //$uID=(int)$uID;
+		
+        //Generate SQL
+        $sql = "insert into img (src, b_name, b_stage, date, author) values ('$src', '$b_name', '$b_stage', '$date', '$author');";
+        return mysqli_query($conn, $sql); //執行SQL
+	} else return false;
+}
 
 function getButterflyList() {
     global $conn;
 	$sql = "SELECT * FROM `butterfly`";
 	return mysqli_query($conn, $sql);
 }
-function insertdata($name='',$nickname='', $field='',$gender='',$stage='',$season='',$description=''){
-	global $conn;
-	if ($name > ' ') {
-		//基本安全處理
-		$name=mysqli_real_escape_string($conn, $name);
-		$nickname=mysqli_real_escape_string($conn, $nickname);
-		$field=mysqli_real_escape_string($conn, $field);
-		$gender=mysqli_real_escape_string($conn, $gender);
-		$stage=mysqli_real_escape_string($conn, $stage);
-		$season=mysqli_real_escape_string($conn, $season);
-		$description=mysqli_real_escape_string($conn, $description);	
-		$sql = "insert into butterfly(name, nickname,field,gender,stage,season,description) values ('$name','$nickname','$field', '$gender','$stage','$season','$description')";
-		return mysqli_query($conn, $sql); //執行SQL
-	} else return false;
+
+function showButterfly() {
+    global $conn;
+	$sql = "SELECT * FROM `img`";
+	return mysqli_query($conn, $sql);
 }
- ?>
+?>
