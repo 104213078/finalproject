@@ -6,7 +6,11 @@
 <link type="text/css" rel="stylesheet" href="view.css">
 </head>
 <body>
-<h1>Picture Ablum</h1>
+<div class="box" id="box1"></div>
+<div class="box" id="box2"></div>
+<div id="t">
+<img src="image/title.png" id="title"/>
+</div>
 <div id="content">
 <div id="search">
 <form method='post' action='control.php'>
@@ -55,5 +59,7 @@ echo "</table>";
 ?>
 </div>
 </div>
+<script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="bg.js"></script>
 </body>
 </html>
