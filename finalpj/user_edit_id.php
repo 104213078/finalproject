@@ -53,22 +53,23 @@ $(function (){
 </head>
 
 <body>
-<div id="title">
-<img src="image/圖片7.png" alt="Avatar" class="avatar" id="u">
+<div class="box" id="box1"></div>
+<div class="box" id="box2"></div>
+<div id="t">
 <div id="menu">
+<img src="image/title.png" id="title"/>
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
 <button class="tool" onclick="location.href='user_upload.php'">Upload</button>
-<a href='homepage.php'>logout</a>
 </div>
 </div>
 <div id="content">
 <form method="post" action="control.php" enctype="multipart/form-data">
-<table id="t">
-<tr><td rowspan="7" id="up_p"><label class="upload_cover">
-    <input type="hidden" name="act" value="update">
+<table id="f">
+<tr><td rowspan="4" class="up_p"><label class="upload_cover">
+    <input type="hidden" name="act" value="update" />
     <input class="upload_input" type="file" name="upfile" />
     <?php echo "<img src='upload/", $src, "' class='img'/></label></td>"; ?>
-    <th>名稱</th><td><select name='b_name'>
+    <th>名稱</th><td class="up_d"><select name='b_name'>
 <?php
 $results=getButterflyList();
 global $i;
@@ -84,21 +85,22 @@ while ($rs=mysqli_fetch_array($results)) {
 }
 echo "</td></tr>";
 ?>
-<tr><th>階段</th><td><label><select name="b_stage">
-        <option >幼蟲期</option>
-        <option >變態期</option>
-        <option >成蟲期</option>
+<tr><th>階段</th><td class="up_d"><label><select name="b_stage">
+        <option <?php if ($b_stage=="幼蟲期") echo "selected";?>>幼蟲期</option>
+        <option <?php if ($b_stage=="變態期") echo "selected";?>>變態期</option>
+        <option <?php if ($b_stage=="成蟲期") echo "selected";?>>成蟲期</option>
 </select></label></td></tr>
-<tr><th>日期</th><td><label>
+<tr><th>日期</th><td class="up_d"><label>
         <input type="text" name="date" value="<?php echo $date;?>"/>
 </label></td></tr>
-<tr><th>作者</th><td><label>
+<tr><th>作者</th><td class="up_d"><label>
         <input name="author" type="text" value="<?php echo $author;?>" />
 </label></td></tr>
 </table>
 <input type="submit" class="button" value="Submit" />
 </form>
-
 </div>
+<script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="bg.js"></script>
 </body>
 </html>

@@ -17,12 +17,13 @@
 <link type="text/css" rel="stylesheet" href="user_edit.css">
 </head>
 <body>
-<div id="title">
-<img src="image/圖片7.png" alt="Avatar" class="avatar" id="u">
+<div class="box" id="box1"></div>
+<div class="box" id="box2"></div>
+<div id="t">
 <div id="menu">
+<img src="image/title.png" id="title"/>
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
-<button class="tool" onclick="location.href='user_upload.php'">Upload</button><br />
-<a href='homepage.php'>logout</a>
+<button class="tool" onclick="location.href='user_upload.php'">Upload</button>
 </div>
 </div>
 <div id="content">
@@ -74,5 +75,8 @@ echo "</table>";
 ?>
 </div>
 </div>
+<script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="bg.js"></script>
 </body>
 </html>
+

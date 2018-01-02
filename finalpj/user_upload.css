@@ -1,18 +1,41 @@
 body {
     font-family: 微軟正黑體;
-    font-size:20px;
     text-align: center;
+    font-size:20px;
     background-color: #DCDCDC;
 }
 div {box-sizing: border-box;}
-#title {
-    background: url(image/圖片2.png);
-    background-size: 450px;
+.box {
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    background-size: cover;
+    background-position: center center;
+    background-image: url(image/1.jpg);
+    top: 0px;
+    left: 0px;
+}
+#box1 {z-index: -998;}
+#box2 {
+    z-index: -999;
+    position: absolute;
+    left: 0;
+    top:0;
+}
+#t {
+    //background: url(image/圖片2.png);
+    //background-size: 450px;
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 300px;
+    width: 25%;
     height: 100%;
+}
+#title {
+    width: 80%; 
+    position: relative; 
+    display:block; 
+    margin: auto;
 }
 #u {
     position: absolute;
@@ -22,25 +45,24 @@ div {box-sizing: border-box;}
     margin: 10px 10px;
 }
 #menu {
-position: absolute;
-width: 120px;
-left: 100px;
-top: 300px;
-text-align:center-left;
-font-size:30px;
-font-weight: bold;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    top: 150px;
+    text-align:center-left;
+    font-size:30px;
+    font-weight: bold;
 }
 #content {
     position: absolute;
-    top: 50px;
-    right: 50px;
-    width: 870px;
+    top: 10%;
+    right: 5%;
+    width: 65%;
     height: 80%;
     border-radius:5px;
     background-color: #FFFAF0;
     //background: linear-gradient(to bottom, rgba(255, 255, 255,0.8), rgba(255, 255, 255,0.8));
 }
-.img {width: 280px;}
 .tool {
     border: none;
     width: 110px;
@@ -62,7 +84,6 @@ font-weight: bold;
 .tool:hover {
     background-color: white;
     color: #333F50;
-    border: 2px solid #333F50;
 }
 .button {
     position: absolute;
@@ -86,48 +107,49 @@ font-weight: bold;
 .button:hover {
     background-color: white;
     color: #333F50;
-    border: 2px solid #333F50;
 }
-#t {
-    position: relative;
-    top: 40px;
-    left: 10px;
+#f {
+    margin: 40px 30px auto;
 }
+.img {width: 85%; margin: 50px 0px;}
 th {
     width: 10%;
-    padding: 3px 3px;
+    padding: 8px 3px;
     text-align:right;
     font-size:23px;
     //border: 1px solid #ccc;
 }
-td {
-    width: 45%;
-    padding: 3px 3px;
+.up_d {
+    width: 50%;
+    padding: 6px 0px;
     //border: 1px solid #ccc;
+    text-align: center;
+    max-height: 380px;
 }
 input, select, textarea {
-    width: 90%;
-    padding: 3px 3px;
-    margin: 5px 0;
+    width: 80%;
+    padding: 6px 3px;
+    //margin: 5px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    font-size:16px;
+    font-size: 18px;
 }
-#up_p {border: 10px dotted #595656;}
+.up_p {
+    border: 10px dotted #595656; 
+    width: 40%; 
+    padding: 20px; 
+    text-align: center;
+}
 .upload_cover {
-    width: 200px;
-    //height: 300px;
-    //margin: 50px -200px;
+    width: 75%;
     cursor: pointer;
-    //background: black;
-    //border: 10px dotted #595656;
 }
 .upload_input {
-display: none;
+    display: none;
 }
 .upload_icon {
-left: 0;
-width: 200px;
-//top: 20%;
+    width: 75%; 
+    position: relative;
+    margin: 20px 0 20px 0; 
 }
