@@ -49,6 +49,7 @@ $(function (){
 <img src="image/title.png" id="title"/>
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
 <button class="tool" onclick="location.href='user_upload.php'">Upload</button><br />
+<button class="tool" onclick="location.href='user_myview.php'">Myview</button>
 </div>
 <a href='homepage.php'><img src="image/logout.png" id="logout"/></a>
 </div>
