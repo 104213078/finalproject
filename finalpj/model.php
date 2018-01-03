@@ -99,4 +99,9 @@ function search($name, $season, $stage) {
 	}
 	return mysqli_query($conn, $sql);
 }
+function showMyButterfly($uid){
+	global $conn;
+	$sql = "SELECT `img`.src,`img`.id FROM `img`, `user` WHERE img.author=user.name and user.id=$uid ";
+	return mysqli_query($conn, $sql);
+}
 ?>
