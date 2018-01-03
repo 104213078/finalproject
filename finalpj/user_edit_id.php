@@ -99,7 +99,8 @@ echo "</td></tr>";
         <input name="author" type="text" value="<?php echo $author;?>" />
 </label></td></tr>
 </table>
-<input type="submit" class="button" value="Submit" />
+<button class="button"><a href="control.php?act=delete&id=<?php echo $id; ?>">Delete</a></button>
+<button type="submit" class="button" value="Submit">Submit</button>
 </form>
 </div>
 <script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
