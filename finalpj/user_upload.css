@@ -86,9 +86,9 @@ div {box-sizing: border-box;}
     color: #333F50;
 }
 .button {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
+    position: relative;
+    bottom: 0px;
+    //right: 20px;
     width: 80px;
     border: none;
     padding: 8px 16px;
