@@ -8,7 +8,6 @@
  	exit(0);
  }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -43,41 +42,60 @@ $(function (){
 
 </head>
 <body>
-<div id="title">
-<img src="image/圖片7.png" alt="Avatar" class="avatar" id="u">
+<div class="box" id="box1"></div>
+<div class="box" id="box2"></div>
+<div id="t">
 <div id="menu">
+<img src="image/title.png" id="title"/>
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
-<button class="tool" onclick="location.href='user_upload.php'">Upload</button>
-<a href='homepage.php'>logout</a>
+<button class="tool" onclick="location.href='user_upload.php'">Upload</button><br />
 </div>
+<a href='homepage.php'><img src="image/logout.png" id="logout"/></a>
 </div>
 <div id="content">
-<table id="t">
-<tr><td rowspan="7" id="up_p"><label class="upload_cover">
+<table id="f">
+<tr><td rowspan="4" class="up_p" ><label class="upload_cover">
     <form method="post" action="user_upload_control.php" enctype="multipart/form-data">
-    <input type="hidden" name="act" value="update">
+    <input type="hidden" name="act" value="update" />
     <input class="upload_input" type="file" name="upfile" />
     <input name="act" type="hidden" value='insert' />
     <img src="image/p.png" class="upload_icon"/>
     <input type="submit" value="預覽" />
     </form></label></td>
 <form method="post" action="control.php" enctype="multipart/form-data">
-    <th>名稱</th><td><input type="text"/></td></tr>
-<tr><th>階段</th><td><label><select name="season">
-        <option>幼蟲期</option>
-        <option>變態期</option>
-        <option>成蟲期</option>
+    <th>名稱</th><td class="up_d"><select name='name'>
+<?php
+require('model.php');
+$results=getButterflyList();
+global $i;
+$i=1;
+while ($rs=mysqli_fetch_array($results)) {
+    if ( ($i%3) == 1) {
+        echo "<option>", $rs['name'], "</option>";
+    }
+    $i++;
+}
+echo "</td></tr>";
+?>
+<tr><th>階段</th><td class="up_d"><label><select name="stage">
+        <option >幼蟲期</option>
+        <option >變態期</option>
+        <option >成蟲期</option>
 </select></label></td></tr>
-<tr><th>日期</th><td><label>
+<tr><th>日期</th><td class="up_d"><label>
         <input type="text" name="date" />
 </label></td></tr>
-<tr><th>作者</th><td><label>
-        <input name="author" type="text" />
+<tr><th>作者</th><td class="up_d"><label>
+        <input type="text" name="author" />
 </label></td></tr>
 </table>
+<div id="bu">
 <input type="submit" class="button" value="Submit" />
+</div>
 </form>
-
+</div>
+<script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="bg.js"></script>
 </div>
 </body>
 </html>

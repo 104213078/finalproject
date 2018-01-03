@@ -1,7 +1,7 @@
 <?php
 require("dbconnect.php");
 
-/*function update($fileContents) {
+function update($fileContents) {
 	global $conn;
 	$dbnum=mysql_connect("127.0.0.1","root","www2017");
 	mysql_select_db("test1");
@@ -19,7 +19,7 @@ require("dbconnect.php");
            {
             echo "您所上傳的檔案無法儲存進入資料庫";
            } 
-}*/
+}
 function insert_img ($src='', $b_name='', $b_stage='', $date='', $author='') {
     global $conn;
 	if ($src > ' ') {
@@ -42,48 +42,27 @@ function getButterflyList() {
 	$sql = "SELECT * FROM `butterfly`";
 	return mysqli_query($conn, $sql);
 }
-
+function deleteimg($id){
+    global $conn;
+    $id = (int) $id;
+    $sql = "delete from img where id=$id;";
+    return mysqli_query($conn, $sql);
+}
 function showButterfly() {
     global $conn;
 	$sql = "SELECT * FROM `img`";
 	return mysqli_query($conn, $sql);
 }
-
-function search($name, $season, $stage) {
-    global $conn;
-	if($name == '--') {
-		if($season == '--') {
-			if($stage == '--') {
-				$sql = "SELECT * FROM `butterfly` , `img` name = b_name AND stage = b_stage";
-			} else {
-				$sql = "SELECT * FROM `butterfly`, `img` WHERE stage LIKE $stage AND name = b_name AND stage = b_stage";
-			}
-		} else {
-			if($stage == '--') {
-				$sql = "SELECT * FROM `butterfly`, `img` WHERE season LIKE $season AND name = b_name AND stage = b_stage";
-			}
-			else {
-				$sql = "SELECT * FROM `butterfly`, `img`WHERE season LIKE $season AND stage LIKE $stage AND name = b_name AND stage = b_stage";
-			}
-		}
-	}else {
-		if($season == '--') {
-			if($stage == '--') {
-				$sql = "SELECT * FROM `butterfly`, `img`WHERE name LIKE $name AND name = b_name AND stage = b_stage";
-			} else {
-				$sql = "SELECT * FROM `butterfly`, `img`WHERE name LIKE $name AND stage LIKE $stage AND name = b_name AND stage = b_stage";
-			}
-		} else {
-			if($stage = '--') {
-				$sql = "SELECT * FROM `butterfly`,`img` WHERE season LIKE $season AND name LIKE $name AND name = b_name AND stage = b_stage";
-			} else {
-				$sql = "SELECT * FROM `butterfly`, `img` WHERE season LIKE $season AND name LIKE $name AND stage LIKE $stage AND name = b_name AND stage = b_stage";
-			}
-		}
+function updatedata($id,$b_name,$b_stage,$date,$author){
+	global $conn;
+	$b_name=mysqli_real_escape_string($conn,$b_name);
+	$b_stage=mysqli_real_escape_string($conn,$b_stage);
+	$date=mysqli_real_escape_string($conn,$date);
+	$author=mysqli_real_escape_string($conn,$author);
+	$id = (int)$id;
+	if ($b_name and $id) { //if title is not empty
+		$sql = "update img set b_name='$b_name',b_stage='$b_stage' ,date='$date',author='$author' where id=$id;";
+		mysqli_query($conn, $sql) or die("Insert failed, SQL query error"); //執行SQL
 	}
-	echo "<a href='result.php?id=",$sql,"'>查看查詢結果</a>";
-	return mysqli_query($conn, $sql);
-	
-	
 }
 ?>
