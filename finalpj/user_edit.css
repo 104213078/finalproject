@@ -1,39 +1,17 @@
 body {
     font-family: 微軟正黑體;
+    font-size:20px;
     text-align: center;
 }
 div {box-sizing: border-box;}
-.box {
-    width: 25%;
-    height: 100%;
-    position: absolute;
-    background-size: cover;
-    background-position: center center;
-    background-image: url(image/1.jpg);
-    top: 0px;
-    left: 0px;
-}
-#box1 {z-index: -998;}
-#box2 {
-    z-index: -999;
-    position: absolute;
-    left: 0;
-    top:0;
-}
-#t {
-    //background: url(image/圖片2.png);
-    //background-size: 450px;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 25%;
-    height: 100%;
-}
 #title {
-    width: 80%; 
-    position: relative; 
-    display:block; 
-    margin: auto;
+    background: url(image/圖片2.png);
+    background-size: 450px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 300px;
+    height: 100%;
 }
 #u {
     position: absolute;
@@ -43,19 +21,19 @@ div {box-sizing: border-box;}
     margin: 10px 10px;
 }
 #menu {
-    position: absolute;
-    width: 100%;
-    left: 0px;
-    top: 150px;
-    text-align:center-left;
-    font-size:30px;
-    font-weight: bold;
+position: absolute;
+width: 120px;
+left: 100px;
+top: 300px;
+text-align:center-left;
+font-size:30px;
+font-weight: bold;
 }
 #content {
     position: absolute;
     top: 0px;
     right: 0px;
-    width: 75%;
+    width:980px;
     height: 100%;
     border-radius:5px;
     //background: linear-gradient(to bottom, rgba(119, 136, 153,0.8), rgba(119, 136, 153,0.8));
@@ -143,6 +121,7 @@ select {
 .tool:hover {
     background-color: white;
     color: #333F50;
+    border: 2px solid #333F50;
 }
 .button {
     border: none;
@@ -162,4 +141,5 @@ select {
 .button:hover {
     background-color: white;
     color: #333F50;
+    border: 2px solid #333F50;
 }

@@ -1,6 +1,7 @@
 <?php
 //session_start();
 require("dbconnect.php"); //匯入連結資料庫之共用程式碼
+
 function checkUP($userName,$passWord) {
 	global $conn;
 	$userName = mysqli_real_escape_string($conn,$userName); //將特殊SQL字元編碼，以免被SQL Injection
@@ -21,6 +22,7 @@ function checkUP($userName,$passWord) {
 		return 0;
 	}
 }
+
 function isAdmin($uID){
 	global $conn;
 	$uid=(int)$uID;
@@ -33,4 +35,5 @@ function isAdmin($uID){
 	}
 	return false;
 }
+
 ?>

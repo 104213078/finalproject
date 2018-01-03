@@ -17,13 +17,12 @@
 <link type="text/css" rel="stylesheet" href="user_edit.css">
 </head>
 <body>
-<div class="box" id="box1"></div>
-<div class="box" id="box2"></div>
-<div id="t">
+<div id="title">
+<img src="image/圖片7.png" alt="Avatar" class="avatar" id="u">
 <div id="menu">
-<img src="image/title.png" id="title"/>
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
-<button class="tool" onclick="location.href='user_upload.php'">Upload</button>
+<button class="tool" onclick="location.href='user_upload.php'">Upload</button><br />
+<a href='homepage.php'>logout</a>
 </div>
 </div>
 <div id="content">
@@ -35,6 +34,7 @@ require("model.php");
 $results=getButterflyList();
 global $i;
 $i=1;
+echo "<option>--</option>";
 while ($rs=mysqli_fetch_array($results)) {
     if ( ($i%3) == 1) {
         echo "<option>", $rs['name'], "</option>";
@@ -44,16 +44,19 @@ while ($rs=mysqli_fetch_array($results)) {
 ?>
 </select></label></td>
 <td><label>Season<select name="season">
+        <option>--</option>
         <option>春</option>
         <option>夏</option>
         <option>秋</option>
         <option>冬</option>
 </select></label></td>
 <td><label>Stage<select name="stage">
+        <option>--</option>
         <option>幼蟲期</option>
         <option>變態期</option>
         <option>成蟲期</option>
 </select></label></td>
+<input type="hidden" name="act" value="search" />
 <input type="submit" class="button" value="Submit" />
 </form>
 </div>
@@ -75,8 +78,5 @@ echo "</table>";
 ?>
 </div>
 </div>
-<script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript" src="bg.js"></script>
 </body>
 </html>
-

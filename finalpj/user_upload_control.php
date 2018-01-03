@@ -35,10 +35,7 @@ case 'insert':
     //echo ($exif['IFD0']['Artist']), "<br />";
     //echo ($exif['EXIF']['DateTimeOriginal']), "<br />";
     
-    $str = ($exif['IFD0']['ImageDescription']);
-    $str_sec = explode(", ",$str);
-    $b_name=$str_sec[0];
-    $b_stage=$str_sec[1];
+    $name=$exif['IFD0']['ImageDescription'];
     $src=$exif['FILE']['FileName'];
     $date=$exif['EXIF']['DateTimeOriginal'];
     $author=$exif['IFD0']['Artist'];
@@ -55,23 +52,22 @@ case 'insert':
 <link type="text/css" rel="stylesheet" href="user_upload.css">
 </head>
 <body>
-<div class="box" id="box1"></div>
-<div class="box" id="box2"></div>
-<div id="t">
+<div id="title">
+<img src="image/圖片7.png" alt="Avatar" class="avatar" id="u">
 <div id="menu">
-<img src="image/title.png" id="title"/>
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
 <button class="tool" onclick="location.href='user_upload.php'">Upload</button>
+<a href='homepage.php'>logout</a>
 </div>
 </div>
 <div id="content">
 <form method="post" action="control.php" enctype="multipart/form-data">
 <input name="act" type="hidden" value='insert' />
-<table id="f">
-<tr><td rowspan="4" class="up_p"><label class="upload_cover">
+<table id="t">
+<tr><td rowspan="7" id="up_p"><label class="upload_cover">
     <input type="hidden" name="src" value="<?php echo $src;?>">
     <?php echo "<img src='upload/", $src, "' class='img'/></label></td>"; ?>
-    <th>名稱</th><td class="up_d"><select name='b_name'>
+    <th>名稱</th><td><select name='name'>
 <?php
 $results=getButterflyList();
 global $i;
@@ -79,7 +75,7 @@ $i=1;
 while ($rs=mysqli_fetch_array($results)) {
     if ( ($i%3) == 1) {
         echo "<option "; 
-         if ($b_name==$rs['name']) 
+         if ($name==$rs['name']) 
              echo "selected"; 
          echo ">", $rs['name'], "</option>";
     }
@@ -87,22 +83,20 @@ while ($rs=mysqli_fetch_array($results)) {
 }
 echo "</td></tr>";
 ?>
-<tr><th>階段</th><td class="up_d"><label><select name="b_stage">
-        <option <?php if ($b_stage=="幼蟲期") echo "selected";?>>幼蟲期</option>
-        <option <?php if ($b_stage=="變態期") echo "selected";?>>變態期</option>
-        <option <?php if ($b_stage=="成蟲期") echo "selected";?>>成蟲期</option>
+<tr><th>階段</th><td><label><select name="stage">
+        <option >幼蟲期</option>
+        <option >變態期</option>
+        <option >成蟲期</option>
 </select></label></td></tr>
-<tr><th>日期</th><td class="up_d"><label>
+<tr><th>日期</th><td><label>
         <input type="text" name="date" value="<?php echo $date;?>"/>
 </label></td></tr>
-<tr><th>作者</th><td class="up_d"><label>
+<tr><th>作者</th><td><label>
         <input name="author" type="text" value="<?php echo $author;?>" />
 </label></td></tr>
 </table>
 <input type="submit" class="button" value="Submit" />
 </form>
 </div>
-<script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript" src="bg.js"></script>
 </body>
 </html>

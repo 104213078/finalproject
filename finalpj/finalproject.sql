@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-01-03 09:38:58
--- 伺服器版本: 10.1.16-MariaDB
--- PHP 版本： 5.6.24
+-- 產生時間： 2017-12-28 16:50:51
+-- 伺服器版本: 10.1.21-MariaDB
+-- PHP 版本： 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -104,7 +104,7 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `uid` varchar(20) NOT NULL,
   `pwd` varchar(20) NOT NULL,
-  `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(20) NOT NULL,
   `level` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -113,10 +113,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `uid`, `pwd`, `name`, `level`) VALUES
-(1, 'admin', '123', 'manager', 1),
-(2, 'author1', '123', '拍攝者1', 0),
-(3, 'author2', '123', '拍攝者2', 0),
-(4, 'author3', '123', '拍攝者3', 0);
+(1, 'admin', '123', 'manager', 1);
 
 --
 -- 已匯出資料表的索引
@@ -158,7 +155,7 @@ ALTER TABLE `img`
 -- 使用資料表 AUTO_INCREMENT `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
