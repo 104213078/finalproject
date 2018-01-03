@@ -35,7 +35,10 @@ case 'insert':
     //echo ($exif['IFD0']['Artist']), "<br />";
     //echo ($exif['EXIF']['DateTimeOriginal']), "<br />";
     
-    $name=$exif['IFD0']['ImageDescription'];
+    $str = ($exif['IFD0']['ImageDescription']);
+    $str_sec = explode(", ",$str);
+    $b_name=$str_sec[0];
+    $b_stage=$str_sec[1];
     $src=$exif['FILE']['FileName'];
     $date=$exif['EXIF']['DateTimeOriginal'];
     $author=$exif['IFD0']['Artist'];
@@ -44,6 +47,7 @@ case 'insert':
 }
 
 ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -67,7 +71,7 @@ case 'insert':
 <tr><td rowspan="4" class="up_p"><label class="upload_cover">
     <input type="hidden" name="src" value="<?php echo $src;?>">
     <?php echo "<img src='upload/", $src, "' class='img'/></label></td>"; ?>
-    <th>名稱</th><td class="up_d"><select name='name'>
+    <th>名稱</th><td class="up_d"><select name='b_name'>
 <?php
 $results=getButterflyList();
 global $i;
@@ -75,7 +79,7 @@ $i=1;
 while ($rs=mysqli_fetch_array($results)) {
     if ( ($i%3) == 1) {
         echo "<option "; 
-         if ($name==$rs['name']) 
+         if ($b_name==$rs['name']) 
              echo "selected"; 
          echo ">", $rs['name'], "</option>";
     }
@@ -83,10 +87,10 @@ while ($rs=mysqli_fetch_array($results)) {
 }
 echo "</td></tr>";
 ?>
-<tr><th>階段</th><td class="up_d"><label><select name="stage">
-        <option >幼蟲期</option>
-        <option >變態期</option>
-        <option >成蟲期</option>
+<tr><th>階段</th><td class="up_d"><label><select name="b_stage">
+        <option <?php if ($b_stage=="幼蟲期") echo "selected";?>>幼蟲期</option>
+        <option <?php if ($b_stage=="變態期") echo "selected";?>>變態期</option>
+        <option <?php if ($b_stage=="成蟲期") echo "selected";?>>成蟲期</option>
 </select></label></td></tr>
 <tr><th>日期</th><td class="up_d"><label>
         <input type="text" name="date" value="<?php echo $date;?>"/>
