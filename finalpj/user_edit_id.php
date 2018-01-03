@@ -1,5 +1,6 @@
 <?php
 session_start();
+require("dbconnect.php");
 require('loginmodel.php');
 require('model.php');
 //取得目標內容
@@ -68,6 +69,7 @@ $(function (){
 <tr><td rowspan="4" class="up_p"><label class="upload_cover">
     <input type="hidden" name="act" value="update" />
     <input class="upload_input" type="file" name="upfile" />
+	<input type="hidden" name='id' value="<?php echo $id;?>">
     <?php echo "<img src='upload/", $src, "' class='img'/></label></td>"; ?>
     <th>名稱</th><td class="up_d"><select name='b_name'>
 <?php
@@ -86,9 +88,9 @@ while ($rs=mysqli_fetch_array($results)) {
 echo "</td></tr>";
 ?>
 <tr><th>階段</th><td class="up_d"><label><select name="b_stage">
-        <option <?php if ($b_stage=="幼蟲期") echo "selected";?>>幼蟲期</option>
-        <option <?php if ($b_stage=="變態期") echo "selected";?>>變態期</option>
-        <option <?php if ($b_stage=="成蟲期") echo "selected";?>>成蟲期</option>
+        <option <?php if ($b_stage == "幼蟲期") echo "selected"; ?> >幼蟲期</option>
+        <option <?php if ($b_stage == "變態期") echo "selected"; ?> >變態期</option>
+        <option <?php if ($b_stage == "成蟲期") echo "selected"; ?> >成蟲期</option>
 </select></label></td></tr>
 <tr><th>日期</th><td class="up_d"><label>
         <input type="text" name="date" value="<?php echo $date;?>"/>
