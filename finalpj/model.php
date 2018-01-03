@@ -42,7 +42,12 @@ function getButterflyList() {
 	$sql = "SELECT * FROM `butterfly`";
 	return mysqli_query($conn, $sql);
 }
-
+function deleteimg($id){
+    global $conn;
+    $id = (int) $id;
+    $sql = "delete from img where id=$id;";
+    return mysqli_query($conn, $sql);
+}
 function showButterfly() {
     global $conn;
 	$sql = "SELECT * FROM `img`";
