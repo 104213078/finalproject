@@ -17,15 +17,13 @@
 <link type="text/css" rel="stylesheet" href="user_edit.css">
 </head>
 <body>
-<div class="box" id="box1"></div>
-<div class="box" id="box2"></div>
-<div id="t">
+<div id="title">
+<img src="image/圖片7.png" alt="Avatar" class="avatar" id="u">
 <div id="menu">
-<img src="image/title.png" id="title"/>
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
-<button class="tool" onclick="location.href='user_upload.php'">Upload</button>
+<button class="tool" onclick="location.href='user_upload.php'">Upload</button><br />
+<a href='homepage.php'>logout</a>
 </div>
-<a href='homepage.php'><img src="image/logout.png" id="logout"/></a>
 </div>
 <div id="content">
 <div id="search">
@@ -64,7 +62,8 @@ while ($rs=mysqli_fetch_array($results)) {
 </div>
 <div id="show">
 <?php
-$results=showButterfly();
+$results=$_GET['pid'];
+echo $results;
 $i=1;
 echo "<table class='pic'>";
 while ($rs=mysqli_fetch_array($results)) {
@@ -80,8 +79,5 @@ echo "</table>";
 ?>
 </div>
 </div>
-<script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript" src="bg.js"></script>
 </body>
 </html>
-

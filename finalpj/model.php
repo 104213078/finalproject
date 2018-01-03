@@ -65,4 +65,38 @@ function updatedata($id,$b_name,$b_stage,$date,$author){
 		mysqli_query($conn, $sql) or die("Insert failed, SQL query error"); //執行SQL
 	}
 }
+function search($name, $season, $stage) {
+    global $conn;
+	if($name == '--') {
+		if($season == '--') {
+			if($stage == '--') {
+				$sql = "SELECT * FROM `butterfly` , `img` name = b_name AND stage = b_stage";
+			} else {
+				$sql = "SELECT * FROM `butterfly`, `img` WHERE stage LIKE $stage AND name = b_name AND stage = b_stage";
+			}
+		} else {
+			if($stage == '--') {
+				$sql = "SELECT * FROM `butterfly`, `img` WHERE season LIKE $season AND name = b_name AND stage = b_stage";
+			}
+			else {
+				$sql = "SELECT * FROM `butterfly`, `img`WHERE season LIKE $season AND stage LIKE $stage AND name = b_name AND stage = b_stage";
+			}
+		}
+	}else {
+		if($season == '--') {
+			if($stage == '--') {
+				$sql = "SELECT * FROM `butterfly`, `img`WHERE name LIKE $name AND name = b_name AND stage = b_stage";
+			} else {
+				$sql = "SELECT * FROM `butterfly`, `img`WHERE name LIKE $name AND stage LIKE $stage AND name = b_name AND stage = b_stage";
+			}
+		} else {
+			if($stage = '--') {
+				$sql = "SELECT * FROM `butterfly`,`img` WHERE season LIKE $season AND name LIKE $name AND name = b_name AND stage = b_stage";
+			} else {
+				$sql = "SELECT * FROM `butterfly`, `img` WHERE season LIKE $season AND name LIKE $name AND stage LIKE $stage AND name = b_name AND stage = b_stage";
+			}
+		}
+	}
+	return mysqli_query($conn, $sql);
+}
 ?>
