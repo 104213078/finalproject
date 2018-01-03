@@ -12,6 +12,7 @@ case 'insert':
     $author=$_REQUEST['author'];
     
     insert_img ($src, $b_name, $b_stage, $date, $author);
+    break;
 	
 case 'update':
     $id = (int) $_REQUEST['id'];
@@ -20,6 +21,14 @@ case 'update':
     $date=$_REQUEST['date'];
     $author=$_REQUEST['author'];
 	updatedata($id,$b_name,$b_stage,$date,$author);
+    break;
+    
+case 'delete':
+    $id = (int) $_REQUEST['id'];
+    if ($id > 0 and isAdmin($_SESSION['uid'])) {
+		deleteimg($id);
+	}
+    break;
 }
 
 ?>
@@ -36,6 +45,9 @@ if($action =='update'){
 }
 if($action =='insert'){
     header('Location: user_upload.php');	
+}
+if($action =='delete'){
+    header('Location: user_edit.php');	
 }	
 ?>
 </body>
