@@ -48,4 +48,16 @@ function showButterfly() {
 	$sql = "SELECT * FROM `img`";
 	return mysqli_query($conn, $sql);
 }
+function updatedata($id,$b_name,$b_stage,$date,$author){
+	global $conn;
+	$b_name=mysqli_real_escape_string($conn,$b_name);
+	$b_stage=mysqli_real_escape_string($conn,$b_stage);
+	$date=mysqli_real_escape_string($conn,$date);
+	$author=mysqli_real_escape_string($conn,$author);
+	$id = (int)$id;
+	if ($b_name and $id) { //if title is not empty
+		$sql = "update img set b_name='$b_name',b_stage='$b_stage' ,date='$date',author='$author' where id=$id;";
+		mysqli_query($conn, $sql) or die("Insert failed, SQL query error"); //執行SQL
+	}
+}
 ?>
