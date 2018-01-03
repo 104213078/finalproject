@@ -12,6 +12,14 @@ case 'insert':
     $author=$_REQUEST['author'];
     
     insert_img ($src, $b_name, $b_stage, $date, $author);
+	
+case 'update':
+    $id = (int) $_REQUEST['id'];
+    $b_name=$_REQUEST['b_name'];
+    $b_stage=$_REQUEST['b_stage'];
+    $date=$_REQUEST['date'];
+    $author=$_REQUEST['author'];
+	updatedata($id,$b_name,$b_stage,$date,$author);
 }
 
 ?>
@@ -22,6 +30,13 @@ case 'insert':
 <title>無標題文件</title>
 </head>
 <body>
-<a href='user_upload.php'>執行完成，回留言板</a>
+<?php
+if($action =='update'){
+    header('Location: user_edit.php');	
+}
+if($action =='insert'){
+    header('Location: user_upload.php');	
+}	
+?>
 </body>
 </html>
