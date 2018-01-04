@@ -4,6 +4,96 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Picture</title>
 <link type="text/css" rel="stylesheet" href="view.css">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+    // $("#select").submit(function(event){
+         // event.preventDefault();
+        // var t = {
+                // "act":"search",
+                // name : $('#name').val(),
+                // season : $('#season').val(),
+                // stage : $('#stage').val()
+            // };
+            // console.log(t);
+        // $.ajax({
+            // url:"control.php",
+            // type:"POST",
+            // data:{
+                // "act":"search",
+                // name : $('#name').val(),
+                // season : $('#season').val(),
+                // stage : $('#stage').val()
+            // },
+            // success:function(r){
+                // var result = JSON.parse(r);
+                // console.log(result);
+                // $("#show").empty();
+                // for(var i=0; i<result.length; i++){
+                    // console.log(i);
+                    // var row = '<div style="background-image:url('+result[i]+')" class="img"><a href="user_intro.php?id='+i+'"></a></div>';
+                    // $("#show").append(row);
+                // }
+            // }
+        // })
+    // })
+    $("#name").change(function(event){
+         event.preventDefault();       
+        $.ajax({
+            url:"control.php",
+            type:"POST",
+            data:{"act":"search", name : $('#name').val(), season : $('#season').val(), stage : $('#stage').val()},
+            success:function(r){
+                var result = JSON.parse(r);
+                console.log(result);
+                $("#show").empty();
+                for(var i=0; i<result.length; i=i+2){
+                    console.log(i);
+                    var row = '<div style="background-image:url('+result[i]+')" class="img"><a href="user_intro.php?id='+result[i+1]+'"></a></div>';
+                    $("#show").append(row);
+                }
+            }
+        })
+    })
+    $("#season").change(function(event){
+         event.preventDefault();       
+        $.ajax({
+            url:"control.php",
+            type:"POST",
+            data:{"act":"search", name : $('#name').val(), season : $('#season').val(), stage : $('#stage').val()},
+            success:function(r){
+                var result = JSON.parse(r);
+                console.log(result);
+                $("#show").empty();
+                for(var i=0; i<result.length; i=i+2){
+                    console.log(i);
+                    var row = '<div style="background-image:url('+result[i]+')" class="img"><a href="user_intro.php?id='+result[i+1]+'"></a></div>';
+                    $("#show").append(row);
+                }
+            }
+        })
+    })
+    $("#stage").change(function(event){
+        event.preventDefault();       
+        $.ajax({
+            url:"control.php",
+            type:"POST",
+            data:{"act":"search", name : $('#name').val(), season : $('#season').val(), stage : $('#stage').val()},
+            success:function(r){
+                var result = JSON.parse(r);
+                console.log(result);
+                $("#show").empty();
+                for(var i=0; i<result.length; i=i+2){
+                    console.log(i);
+                    var row = '<div style="background-image:url('+result[i]+')" class="img"><a href="user_intro.php?id='+result[i+1]+'"></a></div>';
+                    $("#show").append(row);
+                }
+            }
+        })
+    })
+  
+})
+</script>
 </head>
 <body>
 <div class="box" id="box1"></div>
@@ -13,8 +103,8 @@
 </div>
 <div id="content">
 <div id="search">
-<form method='post' action='control.php'>
-<td><label>Name<select name='name' value='name'>
+<form method='post' action='control.php' id="select">
+<td><label>Name<select id='name' value='name'>
 <?php
 require("model.php");
 $results=getButterflyList();
@@ -29,39 +119,30 @@ while ($rs=mysqli_fetch_array($results)) {
 }
 ?>
 </select></label></td>
-<td><label>Season<select name="season">
+<td><label>Season<select id="season">
         <option>--</option>
         <option>春</option>
         <option>夏</option>
         <option>秋</option>
         <option>冬</option>
 </select></label></td>
-<td><label>Stage<select name="stage">
+<td><label>Stage<select id="stage">
         <option>--</option>
         <option>幼蟲期</option>
         <option>變態期</option>
         <option>成蟲期</option>
 </select></label></td>
 <input type="hidden" name="act" value="search" />
-<input type="submit" class="button" value="Submit" />
+<!--<input type="submit" class="button" value="Submit" />-->
 </form>
 </div>
 <div id="show">
 <?php
 $results=showButterfly();
-$i=1;
-echo "<table class='pic' >";
 while ($rs=mysqli_fetch_array($results)) {
-    if ($i%4==1) 
-        echo "<tr>";
-    echo "<td class='k'><div style=\"background-image:url('upload/", $rs['src'], "')\" class='img'>";
-	echo "<a href='user_intro.php?id=",$rs['id'] ,"'></a></div></td>";
-	//echo "<div class='mid'></div></td>";
-    if ($i%4==0)
-        echo "</tr>";
-    $i++;
+    echo "<div style=\"background-image:url('upload/", $rs['src'], "')\" class='img'>";
+	echo "<a href='user_intro.php?id=",$rs['id'] ,"'></a></div>";
 }
-echo "</table>";
 ?>
 </div>
 </div>

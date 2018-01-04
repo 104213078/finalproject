@@ -86,18 +86,19 @@ select {
     overflow-x: hidden;
     //border-radius:5px;
     background-color: #FFFAF0;
-}
-.pic {
-    border-spacing:30px;
+    text-align: center;
 }
 .img {
-    width: 320px;
-    height: 180px;
+    display: inline-block;
+    margin: 20px 10px auto;
+    left: 0;
+    right: 0;
+    width: 280px;
+    height: 150px;
     background-size:300px;
     background-repeat: no-repeat;
     background-position:center center;
 	overflow: hidden;
-	
 }
 
 .img a {

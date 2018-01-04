@@ -34,17 +34,10 @@ case 'search':
     $name=$_REQUEST['name'];
     $season=$_REQUEST['season'];
     $stage=$_REQUEST['stage'];
-    show_results($name, $season, $stage);
+    echo show_results($name, $season, $stage);
 	break;
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>無標題文件</title>
-</head>
-<body>
 <?php
 if($action =='update'){
     header('Location: user_edit.php');	
@@ -56,5 +49,3 @@ if($action =='delete'){
     header('Location: user_edit.php');	
 }	
 ?>
-</body>
-</html>

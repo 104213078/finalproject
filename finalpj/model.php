@@ -1,4 +1,3 @@
-<link type="text/css" rel="stylesheet" href="user_edit.css">
 <?php
 require("dbconnect.php");
 
@@ -83,17 +82,22 @@ function search($name, $season, $stage) {
 }
 function show_results($name, $season, $stage) {
 	$results=search($name, $season, $stage);
-    $i=1;
-    echo "<table class='pic'>";
+    // $i=1;
+    // echo "<table class='pic'>";
+    // while ($rs=mysqli_fetch_array($results)) {
+        // if ($i%3==1) 
+            // echo "<tr>";
+            // echo "<td class='k'><div style=\"background-image:url('upload/", $rs['src'], "')\" class='img'></div>";
+            // if ($i%3==0)
+                // echo "</tr>";
+            // $i++;
+    // }
+    // echo "</table>";
+    $result =array();
     while ($rs=mysqli_fetch_array($results)) {
-    if ($i%3==1) 
-        echo "<tr>";
-        echo "<td class='k'><div style=\"background-image:url('upload/", $rs['src'], "')\" class='img'></div>";
-        if ($i%3==0)
-            echo "</tr>";
-        $i++;
+       array_push($result,'upload/'.$rs['src'], $rs['id']);
     }
-    echo "</table>";
+    return json_encode($result,JSON_UNESCAPED_UNICODE);
 }
 function showMyButterfly($uid){
 	global $conn;
