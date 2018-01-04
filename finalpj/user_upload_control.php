@@ -36,7 +36,7 @@ case 'insert':
     //echo ($exif['EXIF']['DateTimeOriginal']), "<br />";
     
     $str = ($exif['IFD0']['ImageDescription']);
-    $str_sec = explode(", ",$str);
+    $str_sec = explode("-",$str);
     $b_name=$str_sec[0];
     $b_stage=$str_sec[1];
     $src=$exif['FILE']['FileName'];
@@ -72,22 +72,9 @@ case 'insert':
 <tr><td rowspan="4" class="up_p"><label class="upload_cover">
     <input type="hidden" name="src" value="<?php echo $src;?>">
     <?php echo "<img src='upload/", $src, "' class='img'/></label></td>"; ?>
-    <th>名稱</th><td class="up_d"><select name='b_name'>
-<?php
-$results=getButterflyList();
-global $i;
-$i=1;
-while ($rs=mysqli_fetch_array($results)) {
-    if ( ($i%3) == 1) {
-        echo "<option "; 
-         if ($b_name==$rs['name']) 
-             echo "selected"; 
-         echo ">", $rs['name'], "</option>";
-    }
-    $i++;
-}
-echo "</td></tr>";
-?>
+    <th>名稱</th><td class="up_d"><label>
+        <input type="text" name="b_name" value="<?php echo $b_name;?>"/>
+</label></td></tr>
 <tr><th>階段</th><td class="up_d"><label><select name="b_stage">
         <option <?php if ($b_stage=="幼蟲期") echo "selected";?>>幼蟲期</option>
         <option <?php if ($b_stage=="變態期") echo "selected";?>>變態期</option>
@@ -103,7 +90,7 @@ echo "</td></tr>";
 <div id="bu">
 <input type="submit" class="button" value="Submit" />
 </div>
-<form>
+</form>
 </div>
 <script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="bg.js"></script>

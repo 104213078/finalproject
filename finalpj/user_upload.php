@@ -64,7 +64,7 @@ $(function (){
     <input type="submit" value="預覽" />
     </form></label></td>
 <form method="post" action="control.php" enctype="multipart/form-data">
-    <th>名稱</th><td class="up_d"><select name='name'>
+    <th>名稱</th><td class="up_d"><select name='b_name'>
 <?php
 require('model.php');
 $results=getButterflyList();
@@ -78,7 +78,7 @@ while ($rs=mysqli_fetch_array($results)) {
 }
 echo "</td></tr>";
 ?>
-<tr><th>階段</th><td class="up_d"><label><select name="stage">
+<tr><th>階段</th><td class="up_d"><label><select name="b_stage">
         <option >幼蟲期</option>
         <option >變態期</option>
         <option >成蟲期</option>
