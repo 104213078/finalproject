@@ -61,9 +61,10 @@ case 'insert':
 <div id="menu">
 <img src="image/title.png" id="title"/>
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
-<button class="tool" onclick="location.href='user_upload.php'">Upload</button>
+<button class="tool" onclick="location.href='user_upload.php'">Upload</button><br />
+<button class="tool" onclick="location.href='user_myview.php'">Myview</button>
 </div>
-<a href='homepage.php'><img src="image/logout.png" id="logout"/></a>
+<a href='homepage.php' title ='登出'><img src="image/logout.png" id="logout"/></a>
 </div>
 <div id="content">
 <form method="post" action="control.php" enctype="multipart/form-data">
