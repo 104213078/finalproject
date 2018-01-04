@@ -2,25 +2,6 @@
 <?php
 require("dbconnect.php");
 
-function update($fileContents) {
-	global $conn;
-	$dbnum=mysql_connect("127.0.0.1","root","www2017");
-	mysql_select_db("test1");
-	$SQLSTR="Insert into image(filename,filesize,filetype,filepic) values('"
-                  . $_FILES["upfile"]["name"] . "',"
-                  . $_FILES["upfile"]["size"] . ",'"
-                  . $_FILES["upfile"]["type"] . "','"
-                  . $fileContents . "')";
-         //將圖片檔案資料寫入資料庫
-         if(!mysql_query($SQLSTR)==0)
-           {
-            echo "您所上傳的檔案已儲存進入資料庫<br/><a href='user_upload.php'>回到上傳區</a>";
-           }
-         else
-           {
-            echo "您所上傳的檔案無法儲存進入資料庫";
-           } 
-}
 function insert_img ($src='', $b_name='', $b_stage='', $date='', $author='') {
     global $conn;
 	if ($src > ' ') {
@@ -108,11 +89,20 @@ function show_results($name, $season, $stage) {
     if ($i%3==1) 
         echo "<tr>";
         echo "<td class='k'><div style=\"background-image:url('upload/", $rs['src'], "')\" class='img'></div>";
-        echo "<div class='mid'><a href='user_edit_id.php?id=",$rs['id'] ,"'><img src='image/pencil.png' class='edit'/></a></div></td>";
         if ($i%3==0)
             echo "</tr>";
         $i++;
     }
     echo "</table>";
+}
+function showMyButterfly($uid){
+	global $conn;
+	$sql = "SELECT `img`.src,`img`.id FROM `img`, `user` WHERE img.author=user.name and user.id=$uid ";
+	return mysqli_query($conn, $sql);
+}
+function getitButterflyList($id) {
+    global $conn;
+	$sql = "SELECT `butterfly`.*, `img`.`src` FROM `img`, `butterfly` WHERE img.b_name=butterfly.name AND img.b_stage=butterfly.stage AND img.id=$id";
+	return mysqli_query($conn, $sql);
 }
 ?>

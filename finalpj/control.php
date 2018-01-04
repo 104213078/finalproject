@@ -6,8 +6,8 @@ $action =$_REQUEST['act'];
 switch ($action) {
 case 'insert':
     $src=$_REQUEST['src'];
-    $b_name=$_REQUEST['b_name'];
-    $b_stage=$_REQUEST['b_stage'];
+    $b_name=$_REQUEST['name'];
+    $b_stage=$_REQUEST['stage'];
     $date=$_REQUEST['date'];
     $author=$_REQUEST['author'];
     
@@ -54,7 +54,7 @@ if($action =='insert'){
 }
 if($action =='delete'){
     header('Location: user_edit.php');	
-}
+}	
 ?>
 </body>
 </html>
