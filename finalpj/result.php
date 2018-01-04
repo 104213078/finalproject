@@ -62,7 +62,8 @@ while ($rs=mysqli_fetch_array($results)) {
 </div>
 <div id="show">
 <?php
-$results=$_REQUEST['id'];
+$results=$_GET['pid'];
+echo $results;
 $i=1;
 echo "<table class='pic'>";
 while ($rs=mysqli_fetch_array($results)) {

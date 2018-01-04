@@ -37,7 +37,6 @@ require("model.php");
 $results=getButterflyList();
 global $i;
 $i=1;
-echo "<option>--</option>";
 while ($rs=mysqli_fetch_array($results)) {
     if ( ($i%3) == 1) {
         echo "<option>", $rs['name'], "</option>";
@@ -47,25 +46,23 @@ while ($rs=mysqli_fetch_array($results)) {
 ?>
 </select></label></td>
 <td><label>Season<select name="season">
-        <option>--</option>
         <option>春</option>
         <option>夏</option>
         <option>秋</option>
         <option>冬</option>
 </select></label></td>
 <td><label>Stage<select name="stage">
-        <option>--</option>
         <option>幼蟲期</option>
         <option>變態期</option>
         <option>成蟲期</option>
 </select></label></td>
-<input type="hidden" name="act" value="search" />
 <input type="submit" class="button" value="Submit" />
 </form>
 </div>
 <div id="show">
 <?php
-$results=showButterfly();
+$uid = $_SESSION['uid'];
+$results=showMyButterfly($uid);
 $i=1;
 echo "<table class='pic'>";
 while ($rs=mysqli_fetch_array($results)) {

@@ -54,7 +54,9 @@ echo "<table class='pic' >";
 while ($rs=mysqli_fetch_array($results)) {
     if ($i%4==1) 
         echo "<tr>";
-    echo "<td background='upload/", $rs['src'], "' class='img'></td>";
+    echo "<td class='k'><div style=\"background-image:url('upload/", $rs['src'], "')\" class='img'>";
+	echo "<a href='user_intro.php?id=",$rs['id'] ,"'></a></div></td>";
+	//echo "<div class='mid'></div></td>";
     if ($i%4==0)
         echo "</tr>";
     $i++;

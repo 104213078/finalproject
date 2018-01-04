@@ -49,6 +49,7 @@ $(function (){
 <img src="image/title.png" id="title"/>
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
 <button class="tool" onclick="location.href='user_upload.php'">Upload</button><br />
+<button class="tool" onclick="location.href='user_myview.php'">Myview</button>
 </div>
 <a href='homepage.php'><img src="image/logout.png" id="logout"/></a>
 </div>
@@ -63,7 +64,7 @@ $(function (){
     <input type="submit" value="預覽" />
     </form></label></td>
 <form method="post" action="control.php" enctype="multipart/form-data">
-    <th>名稱</th><td class="up_d"><select name='b_name'>
+    <th>名稱</th><td class="up_d"><select name='name'>
 <?php
 require('model.php');
 $results=getButterflyList();
@@ -77,7 +78,7 @@ while ($rs=mysqli_fetch_array($results)) {
 }
 echo "</td></tr>";
 ?>
-<tr><th>階段</th><td class="up_d"><label><select name="b_stage">
+<tr><th>階段</th><td class="up_d"><label><select name="stage">
         <option >幼蟲期</option>
         <option >變態期</option>
         <option >成蟲期</option>
