@@ -34,9 +34,8 @@ case 'search':
     $name=$_REQUEST['name'];
     $season=$_REQUEST['season'];
     $stage=$_REQUEST['stage'];
-    
-    $results = search($name, $season, $stage);
-	echo "<a href='result.php?pid=" ,$results, "'>查看查詢結果</a>";
+    show_results($name, $season, $stage);
+	break;
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -55,7 +54,7 @@ if($action =='insert'){
 }
 if($action =='delete'){
     header('Location: user_edit.php');	
-}	
+}
 ?>
 </body>
 </html>

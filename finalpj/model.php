@@ -1,3 +1,4 @@
+<link type="text/css" rel="stylesheet" href="user_edit.css">
 <?php
 require("dbconnect.php");
 
@@ -70,38 +71,48 @@ function search($name, $season, $stage) {
 	if($name == '--') {
 		if($season == '--') {
 			if($stage == '--') {
-				$sql = "SELECT * FROM `butterfly` , `img` name = b_name AND stage = b_stage";
+				$sql = "SELECT * FROM `butterfly` , `img` WHERE name = b_name AND stage = b_stage";
 			} else {
-				$sql = "SELECT * FROM `butterfly`, `img` WHERE stage LIKE $stage AND name = b_name AND stage = b_stage";
+				$sql = "SELECT * FROM `butterfly`, `img` WHERE stage LIKE '$stage' AND name = b_name AND stage = b_stage";
 			}
 		} else {
 			if($stage == '--') {
-				$sql = "SELECT * FROM `butterfly`, `img` WHERE season LIKE $season AND name = b_name AND stage = b_stage";
+				$sql = "SELECT * FROM `butterfly`, `img` WHERE season LIKE '$season' AND name = b_name AND stage = b_stage";
 			}
 			else {
-				$sql = "SELECT * FROM `butterfly`, `img`WHERE season LIKE $season AND stage LIKE $stage AND name = b_name AND stage = b_stage";
+				$sql = "SELECT * FROM `butterfly`, `img` WHERE season LIKE '$season' AND stage LIKE '$stage' AND name = b_name AND stage = b_stage";
 			}
 		}
 	}else {
 		if($season == '--') {
 			if($stage == '--') {
-				$sql = "SELECT * FROM `butterfly`, `img`WHERE name LIKE $name AND name = b_name AND stage = b_stage";
+				$sql = "SELECT * FROM `butterfly`, `img` WHERE name LIKE '$name' AND name = b_name AND stage = b_stage";
 			} else {
-				$sql = "SELECT * FROM `butterfly`, `img`WHERE name LIKE $name AND stage LIKE $stage AND name = b_name AND stage = b_stage";
+				$sql = "SELECT * FROM `butterfly`, `img` WHERE name LIKE '$name' AND stage LIKE '$stage' AND name = b_name AND stage = b_stage";
 			}
 		} else {
 			if($stage = '--') {
-				$sql = "SELECT * FROM `butterfly`,`img` WHERE season LIKE $season AND name LIKE $name AND name = b_name AND stage = b_stage";
+				$sql = "SELECT * FROM `butterfly`,`img` WHERE season LIKE '$season' AND name LIKE '$name' AND name = b_name AND stage = b_stage";
 			} else {
-				$sql = "SELECT * FROM `butterfly`, `img` WHERE season LIKE $season AND name LIKE $name AND stage LIKE $stage AND name = b_name AND stage = b_stage";
+				$sql = "SELECT * FROM `butterfly`, `img` WHERE season LIKE '$season' AND name LIKE '$name' AND stage LIKE '$stage' AND name = b_name AND stage = b_stage";
 			}
 		}
 	}
 	return mysqli_query($conn, $sql);
 }
-function showMyButterfly($uid){
-	global $conn;
-	$sql = "SELECT `img`.src,`img`.id FROM `img`, `user` WHERE img.author=user.name and user.id=$uid ";
-	return mysqli_query($conn, $sql);
+function show_results($name, $season, $stage) {
+	$results=search($name, $season, $stage);
+    $i=1;
+    echo "<table class='pic'>";
+    while ($rs=mysqli_fetch_array($results)) {
+    if ($i%3==1) 
+        echo "<tr>";
+        echo "<td class='k'><div style=\"background-image:url('upload/", $rs['src'], "')\" class='img'></div>";
+        echo "<div class='mid'><a href='user_edit_id.php?id=",$rs['id'] ,"'><img src='image/pencil.png' class='edit'/></a></div></td>";
+        if ($i%3==0)
+            echo "</tr>";
+        $i++;
+    }
+    echo "</table>";
 }
 ?>
