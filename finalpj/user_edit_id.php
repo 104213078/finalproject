@@ -101,7 +101,11 @@ echo "</td></tr>";
 </label></td></tr>
 </table>
 <div id="bu">
-<button class="button"><a href="control.php?act=delete&id=<?php echo $id; ?>">Delete</a></button>
+<?php
+if(isAdmin($_SESSION['uid'])){
+    echo "<button class='button'><a href='control.php?act=delete&id=<?php echo $id; ?>'>Delete</a></button>";
+}
+?>
 <button type="submit" class="button" value="Submit">Submit</button>
 </div>
 </form>
