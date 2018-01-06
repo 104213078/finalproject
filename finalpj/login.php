@@ -26,7 +26,7 @@ Password<input type="password" name="pwd" placeholder="Enter Password" ><br />
 </div>
 <input type="submit" class="button" value="login">
 </form>
-<button class="button" onclick="location.href='sign_up.php'">sign up</button>
+Don't have an account?&ensp;<a href='sign_up.php' id="sign_up">Sign Up</a>
 
 </div>
 <script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>

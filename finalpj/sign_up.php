@@ -17,17 +17,13 @@ $_SESSION['uid'] = 0;
 <div class="box" id="box2"></div>
 <div id="login">
 <img src="image/title.png" id="title"/>
-<img src="image/圖片5.png" class="user">
 <form method="post" action="loginControl.php">
 <input type="hidden" name="act" value="sign">
-<div id="user">
-Username<input type="text" name="nid" placeholder="Enter User id" ><br />
+Username<input type="text" name="nid" placeholder="Enter User ID" ><br />
 Password<input type="password" name="npwd" placeholder="Enter Password" ><br />
 Name<input type="text" name="name" placeholder="Enter your name" ><br />
 E-mail<input type="text" name="mail" placeholder="Enter your e-mail" ><br />
-</div>
 <input type="submit" class="button" value="sign">
-
 </form>
 </div>
 <script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>

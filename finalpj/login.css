@@ -35,51 +35,61 @@ body {
 }
 div {box-sizing: border-box;}
 #login {
-    width: 380px;
+    width: 450px;
     height: 550px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -275px 0 0 -190px;
+    margin: -275px 0 0 -225px;
     padding: 30px 30px;
     //background: linear-gradient(to bottom, rgba(255, 255, 255,0.9), rgba(255, 255, 255,0.9));
     border: 5px double white;
     color: white;
     text-align: left;
+    font-size: 18px;
 }
 h1 {text-align: center;}
 input {
     width: 100%;
-    padding: 12px 15px;
-    margin: 5px 0;
+    padding: 10px 15px;
+    margin: 10px 0;
     display: inline-block;
     border: 1px solid #ccc;
+    font-size: 15px;
     box-sizing: border-box;
+    border-radius: 5px;
 }
-form {margin: auto; line-height:40px;}
 .button {
     border: none;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
-    font-size: 23px;
-    margin: 40px 2px;
+    font-size: 20px;
+    margin: 15px 2px;
+    width: 100%;
     -webkit-transition-duration: 0.2s; /* Safari */
     //transition-duration: 0.4s;
     cursor: pointer;
-    background-color: white;
-    color: black;
+    background-color: #555555;
+    color: white;
     border: 2px solid #555555;
 }
 .button:hover {
-    background-color: #555555;
-    color: white;
+    background-color: white;
+    color: black;
 }
 .user {
     display:block;
     margin: auto;
-    width: 40%;
+    width: 30%;
 }
+#sign_up {
+    font-size: 22px; 
+    font-weight:bold;
+    text-decoration:none;
+    color: #ff9900;
+}
+#sign_up:hover {text-decoration:underline;}
 #tryagain {
     position: relative;
     margin: auto;
