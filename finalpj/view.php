@@ -96,9 +96,11 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+
 <div class="box" id="box1"></div>
 <div class="box" id="box2"></div>
 <div id="t">
+<div><a href='homepage.php' title ='登出'><img src="image/logout.png"  id="logout"/></a></div>
 <img src="image/title.png" id="title"/>
 </div>
 <div id="content">
