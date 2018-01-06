@@ -108,4 +108,19 @@ function getitButterflyList($id) {
 	$sql = "SELECT `butterfly`.*, `img`.`src` FROM `img`, `butterfly` WHERE img.b_name=butterfly.name AND img.b_stage=butterfly.stage AND img.id=$id";
 	return mysqli_query($conn, $sql);
 }
+function editdata($id,$name,$nickname,$field,$gender,$stage,$season,$description){
+	global $conn;
+	$name=mysqli_real_escape_string($conn,$name);
+	$nickname=mysqli_real_escape_string($conn,$nickname);
+	$field=mysqli_real_escape_string($conn,$field);
+	$gender=mysqli_real_escape_string($conn,$gender);
+	$stage=mysqli_real_escape_string($conn,$stage);
+	$season=mysqli_real_escape_string($conn,$season);
+	$description=mysqli_real_escape_string($conn,$description);
+	$id = (int)$id;
+	if ($name and $id) { //if title is not empty
+		$sql = "update butterfly set name='$name',nickname ='$nickname' ,field='$field',gender='$gender',stage='$stage',season='$season',description='$description' where butterfly.name='$name' and butterfly.stage='$stage';";
+		mysqli_query($conn, $sql) or die("Insert failed, SQL query error"); //執行SQL
+	}
+}
 ?>

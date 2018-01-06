@@ -36,6 +36,18 @@ case 'search':
     $stage=$_REQUEST['stage'];
     echo show_results($name, $season, $stage);
 	break;
+
+case 'edit':
+    $id = (int) $_REQUEST['id'];
+    $name=$_REQUEST['name'];
+    $nickname=$_REQUEST['nickname'];
+    $field=$_REQUEST['field'];
+    $gender=$_REQUEST['gender'];
+    $stage=$_REQUEST['stage'];
+    $season=$_REQUEST['season'];
+    $description=$_REQUEST['description'];
+	editdata($id,$name,$nickname,$field,$gender,$stage,$season,$description);
+    break;
 }
 ?>
 <?php
@@ -46,6 +58,9 @@ if($action =='insert'){
     header('Location: user_upload.php');	
 }
 if($action =='delete'){
+    header('Location: user_edit.php');	
+}
+if($action =='edit'){
     header('Location: user_edit.php');	
 }	
 ?>
