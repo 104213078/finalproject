@@ -8,7 +8,7 @@ $_SESSION['uid'] = 0;
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>User</title>
+<title>sign up</title>
 <link type="text/css" rel="stylesheet" href="login.css">
 </head>
 <body>
@@ -19,15 +19,16 @@ $_SESSION['uid'] = 0;
 <img src="image/title.png" id="title"/>
 <img src="image/圖片5.png" class="user">
 <form method="post" action="loginControl.php">
-<input type="hidden" name="act" value="login">
+<input type="hidden" name="act" value="sign">
 <div id="user">
-Username<input type="text" name="id" placeholder="Enter Username" ><br />
-Password<input type="password" name="pwd" placeholder="Enter Password" ><br />
+Username<input type="text" name="nid" placeholder="Enter User id" ><br />
+Password<input type="password" name="npwd" placeholder="Enter Password" ><br />
+Name<input type="text" name="name" placeholder="Enter your name" ><br />
+E-mail<input type="text" name="mail" placeholder="Enter your e-mail" ><br />
 </div>
-<input type="submit" class="button" value="login">
-</form>
-<button class="button" onclick="location.href='sign_up.php'">sign up</button>
+<input type="submit" class="button" value="sign">
 
+</form>
 </div>
 <script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="bg.js"></script>

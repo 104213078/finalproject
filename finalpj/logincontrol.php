@@ -1,6 +1,6 @@
 <?php
 session_start(); //啟用session 變數功能
-//require("dbconnect.php");
+require("dbconnect.php");
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -30,10 +30,37 @@ case 'login':
 		echo '<button class="button" onclick="location.href=\'login.php\'">Login</button></div>';
 	}
 	break;
+
+case 'sign':
+    $uid = $_POST['nid']; //取得從HTML表單傳來之POST參數
+    $pwd = $_POST['npwd'];
+    $name = $_POST['name'];
+    $mail = $_POST['mail'];
+    
+    if ($uid!='' && $pwd!='' && $mail!='' && $name!='') {
+        global $conn;
+            //基本安全處理
+            $uid=mysqli_real_escape_string($conn,$uid);
+            $pwd=mysqli_real_escape_string($conn,$pwd);
+            $name=mysqli_real_escape_string($conn,$name);
+            $mail=mysqli_real_escape_string($conn,$mail);
+
+            $sql = "INSERT INTO `user` (`uid`, `pwd`,`name`, `email`) VALUES ('$uid', '$pwd', '$name', '$mail');";
+            mysqli_query($conn, $sql); //執行SQL
+            echo "Sucessed!!! <br />Now you can login...<br /><br />";
+            echo '<button class="button" onclick="location.href=\'login.php\'">login</button>';
+            //mysql_close($sql); 
+    }else {
+        echo "Please try again!<br />";
+        echo '<button class="button" onclick="location.href=\'sign_up.php\'">Back</button>';
+    }
+    
+    break;
 }
 ?>
 </div>
 <script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="bg.js"></script>
+
 </body>
 </html>

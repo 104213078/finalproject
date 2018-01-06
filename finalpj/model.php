@@ -1,7 +1,8 @@
 <?php
 require("dbconnect.php");
 
-function insert_img ($src='', $b_name='', $b_stage='', $date='', $author='') {
+
+    function insert_img ($src='', $b_name='', $b_stage='', $date='', $author='') {
     global $conn;
 	if ($src > ' ') {
 		//基本安全處理
@@ -10,9 +11,7 @@ function insert_img ($src='', $b_name='', $b_stage='', $date='', $author='') {
         $b_stage=mysqli_real_escape_string($conn,$b_stage);
         $date=mysqli_real_escape_string($conn,$date);
         $author=mysqli_real_escape_string($conn,$author);
-        //$uID=(int)$uID;
-		
-        //Generate SQL
+        
         $sql = "insert into img (src, b_name, b_stage, date, author) values ('$src', '$b_name', '$b_stage', '$date', '$author');";
         return mysqli_query($conn, $sql); //執行SQL
 	} else return false;
