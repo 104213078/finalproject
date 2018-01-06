@@ -60,18 +60,22 @@ $(function (){
 <div id="menu">
 <img src="image/title.png" id="title"/>
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
-<button class="tool" onclick="location.href='user_upload.php'">Upload</button>
+<button class="tool" onclick="location.href='user_upload.php'">Upload</button><br />
+<button class="tool" onclick="location.href='user_myview.php'">Myview</button>
 </div>
 <a href='homepage.php'><img src="image/logout.png" id="logout"/></a>
 </div>
 <div id="content">
+
+<table id="f_p">
+<td class="up_p" ><label class="upload_cover">
+    <!--<input type="hidden" name="act" value="update" />
+    <input class="upload_input" type="file" name="upfile" />-->
+    <?php echo "<img src='upload/", $src, "' id='upload_icon'/></label></td></table>"; ?>
+<div id="info">
 <form method="post" action="control.php" enctype="multipart/form-data">
 <table id="f">
-<tr><td rowspan="4" class="up_p"><label class="upload_cover">
-    <input type="hidden" name="act" value="update" />
-    <input class="upload_input" type="file" name="upfile" />
-	<input type="hidden" name='id' value="<?php echo $id;?>">
-    <?php echo "<img src='upload/", $src, "' class='img'/></label></td>"; ?>
+    <input type="hidden" name='id' value="<?php echo $id;?>">
     <th>名稱</th><td class="up_d"><select name='b_name'>
 <?php
 $results=getButterflyList();
@@ -99,12 +103,12 @@ echo "</td></tr>";
 <tr><th>作者</th><td class="up_d"><label>
         <input name="author" type="text" value="<?php echo $author;?>" />
 </label></td></tr>
-</table>
+</table></form></div>
 <div id="bu">
 <button class="button"><a href="control.php?act=delete&id=<?php echo $id; ?>">Delete</a></button>
 <button type="submit" class="button" value="Submit">Submit</button>
 </div>
-</form>
+
 </div>
 <script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="bg.js"></script>

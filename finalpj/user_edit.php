@@ -15,6 +15,72 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>User</title>
 <link type="text/css" rel="stylesheet" href="user_edit.css">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+    $("#name").change(function(event){
+         event.preventDefault();       
+        $.ajax({
+            url:"control.php",
+            type:"POST",
+            data:{"act":"search", name : $('#name').val(), season : $('#season').val(), stage : $('#stage').val()},
+            success:function(r){
+                var result = JSON.parse(r);
+                console.log(result);
+                $("#show").empty();
+                for(var i=0; i<result.length; i=i+2){
+                    console.log(i);
+                    var row= "<div class='k'><div style=\"background-image:url('"+result[i]+ "')\" class='img'></div>";
+                    row+= "<div class='mid'><a href='user_edit_img.php?id="+result[i+1]+"' title='修改圖片'><img src='image/edit_img.png' class='edit' id='edit_img'/></a>";
+                    row+= "<a href='user_edit_info.php?id="+result[i+1]+"'title='修改資料'><img src='image/edit_info.png' class='edit' id='edit_img'/></a></div></div>";
+                    $("#show").append(row);
+                }
+            }
+        })
+    })
+    $("#season").change(function(event){
+         event.preventDefault();       
+        $.ajax({
+            url:"control.php",
+            type:"POST",
+            data:{"act":"search", name : $('#name').val(), season : $('#season').val(), stage : $('#stage').val()},
+            success:function(r){
+                var result = JSON.parse(r);
+                console.log(result);
+                $("#show").empty();
+                for(var i=0; i<result.length; i=i+2){
+                    console.log(i);
+                    var row= "<div class='k'><div style=\"background-image:url('"+result[i]+ "')\" class='img'></div>";
+                    row+= "<div class='mid'><a href='user_edit_img.php?id="+result[i+1]+"' title='修改圖片'><img src='image/edit_img.png' class='edit' id='edit_img'/></a>";
+                    row+= "<a href='user_edit_info.php?id="+result[i+1]+"'title='修改資料'><img src='image/edit_info.png' class='edit' id='edit_img'/></a></div></div>";
+                    $("#show").append(row);
+                }
+            }
+        })
+    })
+    $("#stage").change(function(event){
+        event.preventDefault();       
+        $.ajax({
+            url:"control.php",
+            type:"POST",
+            data:{"act":"search", name : $('#name').val(), season : $('#season').val(), stage : $('#stage').val()},
+            success:function(r){
+                var result = JSON.parse(r);
+                console.log(result);
+                $("#show").empty();
+                for(var i=0; i<result.length; i=i+2){
+                    console.log(i);
+                    var row= "<div class='k'><div style=\"background-image:url('"+result[i]+ "')\" class='img'></div>";
+                    row+= "<div class='mid'><a href='user_edit_img.php?id="+result[i+1]+"' title='修改圖片'><img src='image/edit_img.png' class='edit' id='edit_img'/></a>";
+                    row+= "<a href='user_edit_info.php?id="+result[i+1]+"'title='修改資料'><img src='image/edit_info.png' class='edit' id='edit_img'/></a></div></div>";
+                    $("#show").append(row);
+                }
+            }
+        })
+    })
+  
+})
+</script>
 </head>
 <body>
 <div class="box" id="box1"></div>
@@ -31,7 +97,7 @@
 <div id="content">
 <div id="search">
 <form method='post' action='control.php'>
-<td><label>Name<select name='name' value='name'>
+<td><label>Name<select id='name' value='name'>
 <?php
 require("model.php");
 $results=getButterflyList();
@@ -46,38 +112,31 @@ while ($rs=mysqli_fetch_array($results)) {
 }
 ?>
 </select></label></td>
-<td><label>Season<select name="season">
+<td><label>Season<select id="season">
         <option>--</option>
         <option>春</option>
         <option>夏</option>
         <option>秋</option>
         <option>冬</option>
 </select></label></td>
-<td><label>Stage<select name="stage">
+<td><label>Stage<select id="stage">
         <option>--</option>
         <option>幼蟲期</option>
         <option>變態期</option>
         <option>成蟲期</option>
 </select></label></td>
 <input type="hidden" name="act" value="search" />
-<input type="submit" class="button" value="Submit" />
+<!--<input type="submit" class="button" value="Submit" />-->
 </form>
 </div>
 <div id="show">
 <?php
 $results=showButterfly();
-$i=1;
-echo "<table class='pic'>";
 while ($rs=mysqli_fetch_array($results)) {
-    if ($i%3==1) 
-        echo "<tr>";
-    echo "<td class='k'><div style=\"background-image:url('upload/", $rs['src'], "')\" class='img'></div>";
-    echo "<div class='mid'><a href='user_edit_id.php?id=",$rs['id'] ,"'><img src='image/pencil.png' class='edit'/></a></div></td>";
-    if ($i%3==0)
-        echo "</tr>";
-    $i++;
+    echo "<div class='k'><div style=\"background-image:url('upload/", $rs['src'], "')\" class='img'></div>";
+    echo "<div class='mid'><a href='user_edit_img.php?id=",$rs['id'] ,"' title='修改圖片'><img src='image/edit_img.png' class='edit' id='edit_img'/></a>";
+    echo "<a href='user_edit_info.php?id=",$rs['id'] ,"'title='修改資料'><img src='image/edit_info.png' class='edit' id='edit_img'/></a></div></div>";
 }
-echo "</table>";
 ?>
 </div>
 </div>

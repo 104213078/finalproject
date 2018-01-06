@@ -82,9 +82,10 @@ select {
     background-color: #FFFAF0;
     //background: linear-gradient(to bottom, rgba(25, 77, 51,0.6), rgba(25, 77, 51,0.6));
 }
-.pic {margin: 20px auto;}
 .k {
     position: relative;
+    display: inline-block;
+    margin: 5px 5px auto;
 }
 
 .img {
@@ -120,6 +121,7 @@ select {
 
 .edit {
     width: 50px;
+    margin: 5px 10px;
     cursor: pointer;
 }
 .tool {

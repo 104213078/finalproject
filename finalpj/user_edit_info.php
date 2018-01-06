@@ -26,6 +26,9 @@ if ($rs=mysqli_fetch_assoc($results)) {
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>User</title>
 <link type="text/css" rel="stylesheet" href="user_upload.css">
+<style>
+input, select, textarea {width: 75%;}
+</style>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
 window.onload=function(){
@@ -61,7 +64,8 @@ $(function (){
 <div id="menu">
 <img src="image/title.png" id="title"/>
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
-<button class="tool" onclick="location.href='user_upload.php'">Upload</button>
+<button class="tool" onclick="location.href='user_upload.php'">Upload</button><br />
+<button class="tool" onclick="location.href='user_myview.php'">Myview</button>
 </div>
 <a href='user_edit.php'><img src="image/logout.png" id="logout"/></a>
 </div>
@@ -124,11 +128,11 @@ echo "</select></td></tr>";
         <option <?php if($season =="冬") echo "selected"?>>冬</option>
 </select></td></tr>
 <tr><th>詳細</th><td class="up_d">
-        <textarea name="description" rows="4" cols="50"><?php echo $description;?></textarea>
+        <textarea name="description" rows="3" cols="40"><?php echo $description;?></textarea>
 </select></td></tr>
 </table>
 <div id="bu">
-<button class="button"><a href="control.php?act=delete&id=<?php echo $id; ?>">Delete</a></button>
+<!--<button class="button"><a href="control.php?act=delete&id=<?php echo $id; ?>">Delete</a></button>-->
 <button type="submit" class="button" value="Submit">Submit</button>
 </div>
 </form>

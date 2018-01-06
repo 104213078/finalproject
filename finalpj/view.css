@@ -106,11 +106,3 @@ select {
     margin: -10em;
     padding: 10em;
 }
-
-#logout {
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-    width: 50px;
-	z-index: 1;
-}
