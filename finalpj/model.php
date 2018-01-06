@@ -50,7 +50,7 @@ function search($name, $season, $stage) {
 	if($name == '--') {
 		if($season == '--') {
 			if($stage == '--') {
-				$sql = "SELECT * FROM `butterfly` , `img` WHERE name = b_name AND stage = b_stage";
+				$sql = "SELECT * FROM `butterfly`, `img` WHERE name = b_name AND stage = b_stage";
 			} else {
 				$sql = "SELECT * FROM `butterfly`, `img` WHERE stage LIKE '$stage' AND name = b_name AND stage = b_stage";
 			}
@@ -70,7 +70,7 @@ function search($name, $season, $stage) {
 				$sql = "SELECT * FROM `butterfly`, `img` WHERE name LIKE '$name' AND stage LIKE '$stage' AND name = b_name AND stage = b_stage";
 			}
 		} else {
-			if($stage = '--') {
+			if($stage == '--') {
 				$sql = "SELECT * FROM `butterfly`,`img` WHERE season LIKE '$season' AND name LIKE '$name' AND name = b_name AND stage = b_stage";
 			} else {
 				$sql = "SELECT * FROM `butterfly`, `img` WHERE season LIKE '$season' AND name LIKE '$name' AND stage LIKE '$stage' AND name = b_name AND stage = b_stage";
