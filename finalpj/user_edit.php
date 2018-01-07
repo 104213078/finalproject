@@ -3,7 +3,6 @@
  //require("dbconnect.php");
  require('loginmodel.php');
  //set the login mark to empty
- print_r($_SESSION);
  if ( ! isset($_SESSION['uid']) or $_SESSION['uid'] <= 0) {
  	header("Location: login.php");
  	exit(0);

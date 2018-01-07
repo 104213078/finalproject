@@ -105,7 +105,16 @@ echo "</td></tr>";
 </label></td></tr>
 </table></form></div>
 <div id="bu">
-<button class="button"><a href="control.php?act=delete&id=<?php echo $id; ?>">Delete</a></button>
+<?php
+$user=checkUser($_SESSION['uid']);
+$u=mysqli_fetch_array($user);
+if(isAdmin($_SESSION['uid'])){
+    echo "<button class='button'><a href='control.php?act=delete&id=<?php echo $id; ?>'>Delete</a></button>";
+}
+if($u['name']==$author){
+    echo "<button class='button'><a href='control.php?act=delete&id=<?php echo $id; ?>'>Delete</a></button>";
+}
+?>
 <button type="submit" class="button" value="Submit">Submit</button>
 </div>
 
