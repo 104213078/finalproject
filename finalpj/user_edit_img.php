@@ -32,18 +32,15 @@ window.onload=function(){
 $(function (){
     $('.upload_input').hide();
     function preview(input) {
-
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             
             reader.onload = function (e) {
                 $('.upload_icon').attr('src', e.target.result);
             }
-
             reader.readAsDataURL(input.files[0]);
         }
     }
-
     $("body").on("change", ".upload_input", function (){
         preview(this);
     })
@@ -76,21 +73,17 @@ $(function (){
 <form method="post" action="control.php" enctype="multipart/form-data">
 <table id="f">
     <input type="hidden" name='id' value="<?php echo $id;?>">
-    <th>名稱</th><td class="up_d"><select name='b_name'>
+    <tr><th>名稱</th><td class="up_d"><select name='b_name'>
 <?php
-$results=getButterflyList();
-global $i;
-$i=1;
+$sql = "select DISTINCT name from butterfly;";
+$results=mysqli_query($conn,$sql) or die("DB Error: Cannot retrieve message."); //執行SQL查詢
 while ($rs=mysqli_fetch_array($results)) {
-    if ( ($i%3) == 1) {
-        echo "<option "; 
-         if ($b_name==$rs['name']) 
-             echo "selected"; 
-         echo ">", $rs['name'], "</option>";
-    }
-    $i++;
+    echo "<option "; 
+    if ($b_name==$rs['name']) 
+        echo "selected"; 
+    echo ">", $rs['name'], "</option>";
 }
-echo "</td></tr>";
+echo "</select></td></tr>";
 ?>
 <tr><th>階段</th><td class="up_d"><label><select name="b_stage">
         <option <?php if ($b_stage == "幼蟲期") echo "selected"; ?> >幼蟲期</option>
@@ -108,14 +101,12 @@ echo "</td></tr>";
 <?php
 $user=checkUser($_SESSION['uid']);
 $u=mysqli_fetch_array($user);
-if(isAdmin($_SESSION['uid'])){
+if((isAdmin($_SESSION['uid']))||($u['name']==$author)){
     echo "<button class='button'><a href='control.php?act=delete&id=<?php echo $id; ?>'>Delete</a></button>";
-}
-if($u['name']==$author){
-    echo "<button class='button'><a href='control.php?act=delete&id=<?php echo $id; ?>'>Delete</a></button>";
+    echo "<button type='submit' class='button' value='Submit'>Submit</button>";
 }
 ?>
-<button type="submit" class="button" value="Submit">Submit</button>
+
 </div>
 
 </div>

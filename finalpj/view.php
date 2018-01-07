@@ -1,3 +1,7 @@
+<?php
+require("dbconnect.php");
+require('model.php');
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -107,17 +111,13 @@ $(document).ready(function(){
 <form method='post' action='control.php' id="select">
 <td><label>Name<select id='name' value='name'>
 <?php
-require("model.php");
-$results=getButterflyList();
-global $i;
-$i=1;
 echo "<option>--</option>";
+$sql = "select DISTINCT name from butterfly;";
+$results=mysqli_query($conn,$sql) or die("DB Error: Cannot retrieve message."); //執行SQL查詢
 while ($rs=mysqli_fetch_array($results)) {
-    if ( ($i%3) == 1) {
-        echo "<option>", $rs['name'], "</option>";
-    }
-    $i++;
+    echo "<option>", $rs['name'], "</option>";
 }
+echo "</select></td></tr>";
 ?>
 </select></label></td>
 <td><label>Season<select id="season">

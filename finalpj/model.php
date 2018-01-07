@@ -100,7 +100,10 @@ function show_results($name, $season, $stage) {
 }
 function showMyButterfly($uid){
 	global $conn;
-	$sql = "SELECT `img`.src,`img`.id FROM `img`, `user` WHERE img.author=user.name and user.id=$uid ";
+    if ((int)($uid)==1)
+        $sql = "SELECT * FROM `img`";
+    else
+        $sql = "SELECT `img`.src,`img`.id FROM `img`, `user` WHERE img.author=user.name and user.id=$uid ";
 	return mysqli_query($conn, $sql);
 }
 function getitButterflyList($id) {
@@ -125,6 +128,7 @@ function editdata($id,$name,$nickname,$field,$gender,$stage,$season,$description
 }
 function checkUser ($id) {
     global $conn;
+    $id = (int)$id;
     $sql = "SELECT `name` FROM `user` WHERE user.id=$id";
     return mysqli_query($conn, $sql);
 }

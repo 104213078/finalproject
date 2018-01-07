@@ -75,7 +75,7 @@ select {
     font-size: 15px;
 }
 #show {
-    height: 90%;
+    height: 100%;
     padding: 8px 16px;
     overflow: scroll;
     overflow-x: hidden;
@@ -120,8 +120,8 @@ select {
 }
 
 .edit {
-    width: 50px;
-    margin: 5px 10px;
+    width: 60px;
+    margin: 5px 5px;
     cursor: pointer;
 }
 .tool {

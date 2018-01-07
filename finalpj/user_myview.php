@@ -29,52 +29,17 @@
 <a href='homepage.php' title ='登出'><img src="image/logout.png" id="logout"/></a>
 </div>
 <div id="content">
-<div id="search">
-<form method='post' action='control.php'>
-<td><label>Name<select name='name' value='name'>
-<?php
-require("model.php");
-$results=getButterflyList();
-global $i;
-$i=1;
-while ($rs=mysqli_fetch_array($results)) {
-    if ( ($i%3) == 1) {
-        echo "<option>", $rs['name'], "</option>";
-    }
-    $i++;
-}
-?>
-</select></label></td>
-<td><label>Season<select name="season">
-        <option>春</option>
-        <option>夏</option>
-        <option>秋</option>
-        <option>冬</option>
-</select></label></td>
-<td><label>Stage<select name="stage">
-        <option>幼蟲期</option>
-        <option>變態期</option>
-        <option>成蟲期</option>
-</select></label></td>
-<input type="submit" class="button" value="Submit" />
-</form>
-</div>
+
 <div id="show">
 <?php
+require("model.php");
 $uid = $_SESSION['uid'];
 $results=showMyButterfly($uid);
-$i=1;
-echo "<table class='pic'>";
 while ($rs=mysqli_fetch_array($results)) {
-    if ($i%3==1) 
-        echo "<tr>";
-    echo "<td class='k'><div style=\"background-image:url('upload/", $rs['src'], "')\" class='img'></div>";
-    echo "<div class='mid'><a href='user_edit_id.php?id=",$rs['id'] ,"'><img src='image/pencil.png' class='edit'/></a></div></td>";
-    if ($i%3==0)
-        echo "</tr>";
-    $i++;
+    echo "<div class='k'><div style=\"background-image:url('upload/", $rs['src'], "')\" class='img'></div>";
+    echo "<div class='mid'><a href='user_edit_img.php?id=",$rs['id'] ,"' title='修改圖片'><img src='image/edit_img.png' class='edit' id='edit_img'/></a>";
+    echo "<a href='user_edit_info.php?id=",$rs['id'] ,"'title='修改資料'><img src='image/edit_info.png' class='edit' id='edit_img'/></a></div></div>";
 }
-echo "</table>";
 ?>
 </div>
 </div>
