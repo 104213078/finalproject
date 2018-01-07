@@ -123,4 +123,9 @@ function editdata($id,$name,$nickname,$field,$gender,$stage,$season,$description
 		mysqli_query($conn, $sql) or die("Insert failed, SQL query error"); //執行SQL
 	}
 }
+function checkUser ($id) {
+    global $conn;
+    $sql = "SELECT `name` FROM `user` WHERE user.id=$id";
+    return mysqli_query($conn, $sql);
+}
 ?>
