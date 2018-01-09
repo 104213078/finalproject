@@ -63,7 +63,6 @@ $(function (){
 <div id="menu">
 <img src="image/title.png" id="title"/>
 </div>
-<a href='homepage.php'><img src="image/logout.png" id="logout"/></a>
 </div>
 <div id="content">
 <table id="f">
