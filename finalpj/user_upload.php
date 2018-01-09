@@ -2,6 +2,7 @@
  session_start();
  //require("dbconnect.php");
  require('loginmodel.php');
+ require('model.php');
  //set the login mark to empty
  if ( ! isset($_SESSION['uid']) or $_SESSION['uid'] <= 0) {
  	header("Location: login.php");
@@ -71,6 +72,11 @@ $(document).ready(function (e) {
 <div class="box" id="box1"></div>
 <div class="box" id="box2"></div>
 <div id="t">
+<?php
+$user=checkUser($_SESSION['uid']);
+$u=mysqli_fetch_array($user);
+echo "<div id='user_show'><img src='image/圖片5.png' id='user_name' title='",$u['name'],"'/>","</div>";
+?>
 <div id="menu">
 <img src="image/title.png" id="title"/>
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />
@@ -92,9 +98,8 @@ $(document).ready(function (e) {
 <div id="info">
 
 <table id="f">
-    <tr><th>名稱</th><td class="up_d"><div class='h'><label><select name='name'>
+    <tr><th>名稱</th><td class="up_d"><div class='h'><label><select name='b_name'>
 <?php
-require('model.php');
 $results=getButterflyList();
 $n='';
 echo "<option>--</option>";
@@ -106,7 +111,7 @@ while ($rs=mysqli_fetch_array($results)) {
 }
 echo "</label></div></td></tr>";
 ?>
-<tr><th>階段</th><td class="up_d"><div class='h'><label><select name="stage">
+<tr><th>階段</th><td class="up_d"><div class='h'><label><select name="b_stage">
         <option >幼蟲期</option>
         <option >變態期</option>
         <option >成蟲期</option>

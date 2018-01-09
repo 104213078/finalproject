@@ -54,6 +54,13 @@ $(function (){
 <div class="box" id="box1"></div>
 <div class="box" id="box2"></div>
 <div id="t">
+
+<?php
+$user=checkUser($_SESSION['uid']);
+$u=mysqli_fetch_array($user);
+echo "<img src='image/圖片5.png' id='user_name' title='",$u['name'],"'/>";
+?>
+
 <div id="menu">
 <img src="image/title.png" id="title"/>
 <button class="tool" onclick="location.href='user_edit.php'">Edit</button><br />

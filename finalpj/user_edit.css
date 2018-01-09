@@ -29,6 +29,13 @@ div {box-sizing: border-box;}
     width: 25%;
     height: 100%;
 }
+#user_name {
+    position: absolute; 
+    left: 3px; 
+    top: 3px; 
+    width: 50px; 
+    vertical-align:middle;
+}
 #title {
     width: 80%; 
     position: relative; 
